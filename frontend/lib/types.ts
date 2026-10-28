@@ -1,0 +1,82 @@
+export type Requirement = {
+  academic_year: string;
+  min_gpa: number | null;
+  gpa_scale: number | null;
+  ielts_min: number | null;
+  toefl_min: number | null;
+  previous_field: string | null;
+  source_url: string | null;
+  verified_at: string | null;
+  status: string;
+};
+export type Program = {
+  id: number;
+  name: string;
+  degree: string;
+  field: string;
+  teaching_language: string;
+  tuition_eur: number | null;
+  duration_months: number | null;
+  official_url: string | null;
+  is_demo: boolean;
+  requirements: Requirement[];
+};
+export type University = {
+  id: number;
+  slug: string;
+  name: string;
+  city: string;
+  country: string;
+  website: string | null;
+  description: string | null;
+  is_demo: boolean;
+  programs: Program[];
+};
+export type Scholarship = {
+  id: number;
+  name: string;
+  country: string | null;
+  degree: string | null;
+  coverage: string;
+  description: string;
+  source_url: string | null;
+  is_demo: boolean;
+};
+export type Profile = {
+  degree: "bachelor" | "master" | "phd";
+  academic_status?: string;
+  field: string;
+  previous_field?: string;
+  research_interests?: string;
+  gpa?: number;
+  gpa_scale?: number;
+  ielts?: number;
+  toefl?: number;
+  sat?: number;
+  gre?: number;
+  gmat?: number;
+  countries: string[];
+  university_id?: number;
+  budget_eur?: number;
+  scholarship_priority: string;
+  teaching_language?: string;
+  intake_year?: number;
+  semester?: string;
+  citizenship: string;
+  study_format?: string;
+};
+export type Match = {
+  program: Program;
+  university: University;
+  score: number;
+  category: string;
+  uncertainty: string[];
+  notes: string[];
+  checks: Record<string, string>;
+};
+export type MatchResponse = {
+  results: Match[];
+  total: number;
+  no_match_reason: string | null;
+  disclaimer: string;
+};
