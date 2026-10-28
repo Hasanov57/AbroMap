@@ -5,7 +5,7 @@ This walkthrough uses **Vercel Hobby** for the Next.js frontend, **Render Free W
 ## 1. Create the Supabase database
 
 1. Create a Free project at [Supabase](https://supabase.com/dashboard/projects). Save the database password securely.
-2. In the project dashboard, choose **Connect** → **Session pooler**. Copy the PostgreSQL URI on port **5432**. Session pooling suits Render's long-running service and works over IPv4. The app accepts the copied `postgresql://` URI and selects the installed `psycopg` driver automatically.
+2. In the project dashboard, choose **Connect** → **Session pooler**. Copy the PostgreSQL URI on port **5432**. Replace any `[YOUR-PASSWORD]` placeholder with your database password; URL-encode special characters in the password. Session pooling suits Render's long-running service and works over IPv4. The app accepts the copied `postgresql://` URI and selects the installed `psycopg` driver automatically.
 3. If the URI has no `sslmode` parameter, add `?sslmode=require` (or `&sslmode=require` if it already has query parameters). Keep the whole URI private.
 
 ## 2. Deploy the API on Render
