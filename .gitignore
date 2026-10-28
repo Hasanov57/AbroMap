@@ -6,6 +6,7 @@
 !**/.env.example
 **/*.db
 **/*.db-*
+**/abromap-backup-*.db
 **/.venv/
 **/.mypy_cache/
 **/tsconfig.tsbuildinfo

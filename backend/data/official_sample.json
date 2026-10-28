@@ -1,0 +1,107 @@
+{
+  "checked_on": "2026-10-28",
+  "programs": [
+    {
+      "ror_id": "https://ror.org/02kkvpp62",
+      "name": "Informatics",
+      "degree": "master",
+      "field": "computer-science",
+      "teaching_language": "English",
+      "duration_months": 24,
+      "credits_ects": 120,
+      "official_url": "https://www.cit.tum.de/en/cit/studies/degree-programs/master-informatics/",
+      "source_publisher": "Technical University of Munich",
+      "description": "Research-oriented Master of Science in Informatics. The official page describes a two-stage aptitude assessment.",
+      "requirement": {
+        "academic_year": "not stated",
+        "status": "year_unverified",
+        "applicant_category": "international",
+        "previous_study_notes": "The official page states that an equivalent bachelor's degree in Informatics or Computer Science is required; individual curriculum equivalence is assessed by TUM.",
+        "notes": "English proficiency proof is required. The official page lists additional documents and applicant-specific conditions; no universal numeric IELTS or GPA threshold is entered here.",
+        "source_url": "https://www.cit.tum.de/en/cit/studies/degree-programs/master-informatics/",
+        "source_publisher": "Technical University of Munich"
+      }
+    },
+    {
+      "ror_id": "https://ror.org/01nffqt88",
+      "name": "Computer Science and Engineering",
+      "degree": "master",
+      "field": "computer-engineering",
+      "teaching_language": "English",
+      "duration_months": 24,
+      "official_url": "https://www.polimi.it/en/education/laurea-magistrale-programmes/programme-detail/computer-science-and-engineering-ingegneria-informatica",
+      "source_publisher": "Politecnico di Milano",
+      "description": "Master of Science in Computer Science and Engineering, taught in English at Milano Leonardo.",
+      "requirement": {
+        "academic_year": "not stated",
+        "status": "year_unverified",
+        "applicant_category": "international",
+        "previous_study_notes": "A first-level degree is required. Admission depends on prior studies and assessment by Politecnico di Milano.",
+        "notes": "The official program page states that a minimum grade average and proof of English are required, but does not give a universal numeric threshold for this applicant category.",
+        "source_url": "https://www.polimi.it/en/education/laurea-magistrale-programmes/programme-detail/computer-science-and-engineering-ingegneria-informatica",
+        "source_publisher": "Politecnico di Milano"
+      }
+    },
+    {
+      "ror_id": "https://ror.org/01jsq2704",
+      "name": "Computer Science MSc",
+      "degree": "master",
+      "field": "computer-science",
+      "teaching_language": "English",
+      "duration_months": 24,
+      "credits_ects": 120,
+      "application_deadline": "2027-04-30",
+      "official_url": "https://www.elte.hu/en/computer-science-msc",
+      "source_publisher": "Eötvös Loránd University",
+      "description": "English-taught Computer Science MSc. The official listing states September 2027 intake and a two-year duration.",
+      "requirement": {
+        "academic_year": "2027/2028",
+        "status": "verified_current",
+        "applicant_category": "international",
+        "previous_study_notes": "A BSc in Computer Science, or at least 60 ECTS in informatics and mathematics subjects during a related bachelor's degree, is required. Individual assessment remains with ELTE.",
+        "notes": "B2 English proficiency is stated for oral and written skills; an English examination certificate is preferred but not required. An online entrance exam and interview are described on the official page.",
+        "source_url": "https://www.elte.hu/en/computer-science-msc",
+        "source_publisher": "Eötvös Loránd University",
+        "exams": [
+          {"exam_type": "english_cefr", "minimum_level": "B2", "status": "verified_current", "waiver_possible": false}
+        ]
+      }
+    },
+    {
+      "ror_id": "https://ror.org/03cve4549",
+      "name": "Master in Management",
+      "degree": "master",
+      "field": "management",
+      "teaching_language": "Chinese and English",
+      "official_url": "https://masters.sem.tsinghua.edu.cn/en/info/1007/2172.htm",
+      "source_publisher": "Tsinghua University School of Economics and Management",
+      "description": "Bilingual Master in Management offered to international applicants in the 2027 intake.",
+      "requirement": {
+        "academic_year": "2027/2028",
+        "status": "verified_current",
+        "applicant_category": "international",
+        "previous_study_notes": "Applicants must hold a bachelor's degree or equivalent; Tsinghua reviews the full application.",
+        "notes": "The 2027 admission page lists HSK band 5 with a score of at least 180, with documented exemption routes. Citizenship and scholarship rules require individual review.",
+        "source_url": "https://masters.sem.tsinghua.edu.cn/en/info/1007/2172.htm",
+        "source_publisher": "Tsinghua University School of Economics and Management",
+        "exams": [
+          {"exam_type": "hsk", "minimum_level": "5", "minimum_score": 180, "status": "verified_current", "waiver_possible": true}
+        ]
+      }
+    }
+  ],
+  "scholarships": [
+    {
+      "name": "Erasmus Mundus Joint Masters scholarships",
+      "provider": "European Commission — Erasmus+",
+      "country": null,
+      "degree": "master",
+      "coverage": "competitive_full",
+      "description": "Selected Erasmus Mundus Joint Masters may offer competitive full scholarships. Application and eligibility depend on the individual consortium and programme.",
+      "source_url": "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters",
+      "eligible_nationalities": "Applications are open worldwide; individual programme conditions apply.",
+      "funding_components": "Participation costs; contribution to travel, visa and living allowance where a scholarship is awarded.",
+      "verification_status": "verified_current"
+    }
+  ]
+}

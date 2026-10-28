@@ -1,57 +1,53 @@
-# Deploy AbroMap with free services
+# Deploy AbroMap with Supabase, Render and Vercel
 
-This walkthrough uses **Vercel Hobby** for the Next.js frontend, **Render Free Web Service** for FastAPI, and **Supabase Free** for PostgreSQL. The public site will show clearly labeled synthetic demo data. Student profiles and saved items remain in each visitor's browser; Supabase Auth is not implemented yet.
+This is a free-tier hobby deployment: Supabase holds PostgreSQL data, Render runs FastAPI, and Vercel hosts Next.js. The public app starts with four source-checked programs. A manual GitHub Action then imports the bundled ROR institution directory. ROR institutions with no checked program pages appear as catalog-only entries.
 
 ## 1. Create the Supabase database
 
-1. Create a Free project at [Supabase](https://supabase.com/dashboard/projects). Save the database password securely.
-2. In the project dashboard, choose **Connect** → **Session pooler**. Copy the PostgreSQL URI on port **5432**. Replace any `[YOUR-PASSWORD]` placeholder with your database password; URL-encode special characters in the password. Session pooling suits Render's long-running service and works over IPv4. The app accepts the copied `postgresql://` URI and selects the installed `psycopg` driver automatically.
-3. If the URI has no `sslmode` parameter, add `?sslmode=require` (or `&sslmode=require` if it already has query parameters). Keep the whole URI private.
+1. Create a Free project at [Supabase](https://supabase.com/dashboard/projects) and save its database password.
+2. Open **Connect → Session pooler**. Copy its PostgreSQL URI on port `5432`. This mode works from IPv4-only services. Replace the password placeholder and URL-encode special characters in the password.
+3. Add `?sslmode=require` to the URI, or `&sslmode=require` if it already contains a query string. Keep this entire URI private. [Supabase's connection guide](https://supabase.com/docs/guides/database/connecting-to-postgres) explains the pooler and SSL settings.
 
 ## 2. Deploy the API on Render
 
-1. In [Render](https://dashboard.render.com/), choose **New → Web Service** and connect the `Hasanov57/AbroMap` GitHub repository.
-2. Set **Branch** to `main`, **Root Directory** to `backend`, **Language** to `Python 3`, and **Instance Type** to `Free`. The repository pins Python in `backend/.python-version`.
-3. Set **Build Command** to `pip install -r requirements.txt`.
-4. Set **Start Command** to `bash start.sh`.
-5. Add environment variables:
+1. At [Render](https://dashboard.render.com/), choose **New → Web Service** and connect the [Hasanov57/AbroMap](https://github.com/Hasanov57/AbroMap) repository.
+2. Use branch `main`, root directory `backend`, Python runtime and the **Free** instance type. Set build command `pip install -r requirements.txt` and start command `bash start.sh`.
+3. Add these environment variables in Render:
 
    | Name | Value |
    | --- | --- |
-   | `DATABASE_URL` | Supabase **Session pooler** URI from step 1 |
-   | `FRONTEND_ORIGIN` | `http://localhost:3000` temporarily; replace with your Vercel URL in step 4 |
+   | `DATABASE_URL` | Supabase Session pooler URI from step 1, with SSL enabled |
+   | `FRONTEND_ORIGIN` | `http://localhost:3000` initially; replace with the exact Vercel origin in step 4 |
 
-   Leave `OPENAI_API_KEY` unset for the free demo. Never place `DATABASE_URL` in Vercel's `NEXT_PUBLIC_` variables or GitHub files.
+4. Set health check path to `/api/v1/health` if Render offers the setting. Deploy and copy the assigned `https://…onrender.com` URL. The start script runs migrations and loads the four ROR institutions, four source-checked programs and one Erasmus Mundus scheme. Visit `<Render URL>/api/v1/health` and `<Render URL>/api/v1/countries` to verify the API.
 
-6. Set **Health Check Path** to `/api/v1/health` if Render offers the field, then create the service. Startup applies Alembic migrations and seeds the labeled demo records once per missing record. Copy the assigned `https://…onrender.com` URL.
-7. Open `<Render URL>/api/v1/health` and `<Render URL>/api/v1/countries`. The latter should return DE, HU, and IT with 6, 3, and 6 demo programs. If deployment fails, inspect Render's deploy logs; most first-run errors are an incorrect database URI or password.
+`OPENAI_API_KEY` is optional and should stay unset for a free launch. The AI feature responds with a source-oriented fallback when the key is absent.
 
 ## 3. Deploy the frontend on Vercel
 
-1. In [Vercel](https://vercel.com/new), import the same GitHub repository as a new project.
-2. Set **Framework Preset** to `Next.js` and **Root Directory** to `frontend`. Keep the detected install, build, and output settings.
-3. Add one environment variable for **Production** (and Preview if you want preview deployments):
+1. At [Vercel](https://vercel.com/new), import the same GitHub repository as a new project.
+2. Set framework to Next.js and root directory to `frontend`. Keep the detected install and build settings.
+3. Add `NEXT_PUBLIC_API_URL` as a **Production** environment variable. Its value is the exact Render origin, for example `https://your-api.onrender.com`, with no trailing slash.
+4. Deploy and copy the assigned `https://…vercel.app` URL. Vercel embeds this variable during build, so redeploy the frontend if it changes. [Vercel's monorepo guide](https://vercel.com/docs/monorepos) covers the root-directory setting.
 
-   | Name | Value |
-   | --- | --- |
-   | `NEXT_PUBLIC_API_URL` | Exact Render URL, such as `https://your-api.onrender.com`, without a trailing slash |
+## 4. Allow the frontend to call the API
 
-4. Deploy. Copy the assigned production `https://…vercel.app` URL. `NEXT_PUBLIC_API_URL` is embedded at build time, so changing it later requires a new Vercel deployment.
+1. In Render **Environment**, replace `FRONTEND_ORIGIN` with the exact Vercel production origin, for example `https://your-site.vercel.app` (no path or trailing slash). Save so Render redeploys.
+2. Open the Vercel site. It should route `/` to `/az`. Try **Master's → Computer Science → Germany** or **Hungary** in discovery. The results should display source links; other fields or countries may have no verified program yet.
+3. Open the university directory to confirm the four initial institutions appear. A catalog-only page must say that its degree programs have not been verified.
 
-## 4. Enable browser access to the API
+## 5. Import the full ROR university directory
 
-1. In the Render service's **Environment** settings, replace `FRONTEND_ORIGIN` with the exact Vercel production origin, for example `https://your-site.vercel.app` (no path or trailing slash).
-2. Save and deploy the updated Render service.
-3. Open the Vercel site. It should route `/` to `/az`. Try onboarding with **Master's → Computer Science → Not sure yet** for country and university. The results should come from the API. A bachelor's or PhD choice in one of the five focus fields also returns an explicitly uncertain demo result.
+1. In GitHub, open the repository's **Settings → Secrets and variables → Actions** and add a repository secret called `SUPABASE_DATABASE_URL`. Paste the same Supabase Session pooler URI used in Render.
+2. Open **Actions → Import verified ROR university catalog → Run workflow** on `main`. The workflow imports the bundled, checksum-verified ROR v2.15 snapshot. It can be run again after a partial failure or a snapshot update.
+3. Wait for the workflow to finish, then refresh the university directory. The local test imported 10,247 institutions and held nine same-name conflicts for review; production counts may differ if the database already has records. The program count remains four until more official program pages are reviewed.
 
-## Free-tier behavior and current limits
+## Existing Phase 1 database
 
-- Render Free services [spin down after 15 minutes of inactivity](https://render.com/docs/free). The next API request may take about a minute; a visitor might need to retry while it wakes up. Render's local filesystem is temporary, which is why this deployment uses Supabase instead of SQLite.
-- Supabase Free projects [can pause after low activity](https://supabase.com/docs/guides/platform/free-project-pausing). Resume a paused project from its dashboard.
-- Vercel Hobby is [for personal, non-commercial projects](https://vercel.com/docs/plans/hobby). Check the plan terms before using AbroMap commercially.
-- No paid AI service is required. The assistant displays a fallback message without `OPENAI_API_KEY`. Add that key only after rate limiting and abuse controls are implemented.
-- The bundled universities, programs, admission examples, and scholarship are synthetic. Replace them with verified and sourced records before relying on them for real applications.
+If this Supabase project was used by the earlier demo release, the old synthetic records remain in the database after migration, but public endpoints filter them out. Before deleting them, make a PostgreSQL backup and follow [DATA_INGESTION.md](DATA_INGESTION.md)'s cleanup procedure. A new Supabase project does not need this step.
 
-## Future updates
+## Free-tier behavior
 
-Push new commits to `main`; Render and Vercel will redeploy their respective folders. If you add database models, create and commit an Alembic migration before pushing. Render's `start.sh` will apply it at startup.
+[Render Free web services](https://render.com/docs/free) spin down after 15 minutes without traffic and may take about a minute to wake. Their local filesystem is temporary, so the persistent catalog belongs in Supabase. Check [Supabase Free project status](https://supabase.com/docs/guides/platform/free-project-pausing) if the API later cannot reach a paused database. This setup is suitable for a pilot; program and requirement coverage is still limited and should be checked at each university before a real application.
+
+New commits to `main` trigger Render and Vercel redeploys. `start.sh` reapplies migrations and updates the small official sample without duplicating it. See [SUPABASE_SETUP.md](SUPABASE_SETUP.md) for database details and [PHASE2_PROGRESS.md](PHASE2_PROGRESS.md) for current coverage.

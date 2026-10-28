@@ -43,12 +43,14 @@ export function ScholarshipDirectory() {
                 <div className="row space-between">
                   <span className="tag">
                     {t("coverage")}:{" "}
-                    {x.coverage === "full" ? t("full") : t("partial")}
+                    {x.coverage === "competitive_full" ? t("competitiveFull") : x.coverage === "full" ? t("full") : t("partial")}
                   </span>
-                  <span className="tag demo">{common("demo")}</span>
+                  <span className="tag">{t("verifiedSource")}</span>
                 </div>
                 <h3>{x.name}</h3>
-                <p>{x.is_demo ? common("demo") : x.description}</p>
+                <p>{x.description}</p>
+                {x.provider && <p className="small-text muted">{x.provider}</p>}
+                <p className="small-text muted">{t("eligibilityUnconfirmed")}</p>
                 <div className="divider" />
                 {x.source_url ? (
                   <a

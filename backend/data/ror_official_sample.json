@@ -1,0 +1,643 @@
+[
+  {
+    "admin": {
+      "created": {
+        "date": "2018-11-14",
+        "schema_version": "1.0"
+      },
+      "last_modified": {
+        "date": "2025-01-22",
+        "schema_version": "2.1"
+      }
+    },
+    "domains": [
+      "polimi.it"
+    ],
+    "established": 1863,
+    "external_ids": [
+      {
+        "all": [
+          "501100006690"
+        ],
+        "preferred": null,
+        "type": "fundref"
+      },
+      {
+        "all": [
+          "grid.4643.5"
+        ],
+        "preferred": "grid.4643.5",
+        "type": "grid"
+      },
+      {
+        "all": [
+          "0000 0004 1937 0327"
+        ],
+        "preferred": null,
+        "type": "isni"
+      },
+      {
+        "all": [
+          "Q392904"
+        ],
+        "preferred": null,
+        "type": "wikidata"
+      }
+    ],
+    "id": "https://ror.org/01nffqt88",
+    "links": [
+      {
+        "type": "website",
+        "value": "https://polimi.it"
+      },
+      {
+        "type": "wikipedia",
+        "value": "http://en.wikipedia.org/wiki/Polytechnic_University_of_Milan"
+      }
+    ],
+    "locations": [
+      {
+        "geonames_details": {
+          "continent_code": "EU",
+          "continent_name": "Europe",
+          "country_code": "IT",
+          "country_name": "Italy",
+          "country_subdivision_code": "25",
+          "country_subdivision_name": "Lombardy",
+          "lat": 45.46427,
+          "lng": 9.18951,
+          "name": "Milan"
+        },
+        "geonames_id": 3173435
+      }
+    ],
+    "names": [
+      {
+        "lang": "it",
+        "types": [
+          "ror_display",
+          "label"
+        ],
+        "value": "Politecnico di Milano"
+      },
+      {
+        "lang": "en",
+        "types": [
+          "label"
+        ],
+        "value": "Polytechnic University of Milan"
+      },
+      {
+        "lang": "fr",
+        "types": [
+          "label"
+        ],
+        "value": "École Polytechnique de Milan"
+      }
+    ],
+    "relationships": [
+      {
+        "label": "Istituto Nazionale di Fisica Nucleare, Sezione di Milano",
+        "type": "related",
+        "id": "https://ror.org/04w4m6z96"
+      }
+    ],
+    "status": "active",
+    "types": [
+      "education",
+      "funder"
+    ]
+  },
+  {
+    "admin": {
+      "created": {
+        "date": "2018-11-14",
+        "schema_version": "1.0"
+      },
+      "last_modified": {
+        "date": "2025-11-24",
+        "schema_version": "2.1"
+      }
+    },
+    "domains": [
+      "elte.hu"
+    ],
+    "established": 1635,
+    "external_ids": [
+      {
+        "all": [
+          "501100009934"
+        ],
+        "preferred": "501100009934",
+        "type": "fundref"
+      },
+      {
+        "all": [
+          "grid.5591.8"
+        ],
+        "preferred": "grid.5591.8",
+        "type": "grid"
+      },
+      {
+        "all": [
+          "0000 0001 2294 6276"
+        ],
+        "preferred": null,
+        "type": "isni"
+      },
+      {
+        "all": [
+          "Q390287"
+        ],
+        "preferred": null,
+        "type": "wikidata"
+      }
+    ],
+    "id": "https://ror.org/01jsq2704",
+    "links": [
+      {
+        "type": "website",
+        "value": "https://www.elte.hu"
+      },
+      {
+        "type": "wikipedia",
+        "value": "http://en.wikipedia.org/wiki/E%C3%B6tv%C3%B6s_Lor%C3%A1nd_University"
+      }
+    ],
+    "locations": [
+      {
+        "geonames_details": {
+          "continent_code": "EU",
+          "continent_name": "Europe",
+          "country_code": "HU",
+          "country_name": "Hungary",
+          "country_subdivision_code": "BU",
+          "country_subdivision_name": "Budapest",
+          "lat": 47.49835,
+          "lng": 19.04045,
+          "name": "Budapest"
+        },
+        "geonames_id": 3054643
+      }
+    ],
+    "names": [
+      {
+        "lang": null,
+        "types": [
+          "acronym"
+        ],
+        "value": "ELTE"
+      },
+      {
+        "lang": "hu",
+        "types": [
+          "label"
+        ],
+        "value": "Eötvös Loránd Tudományegyetem"
+      },
+      {
+        "lang": "en",
+        "types": [
+          "ror_display",
+          "label"
+        ],
+        "value": "Eötvös Loránd University"
+      },
+      {
+        "lang": "en",
+        "types": [
+          "alias"
+        ],
+        "value": "Pázmány Péter University"
+      },
+      {
+        "lang": "en",
+        "types": [
+          "alias"
+        ],
+        "value": "Royal University of Pest"
+      },
+      {
+        "lang": "en",
+        "types": [
+          "alias"
+        ],
+        "value": "University of Budapest"
+      }
+    ],
+    "relationships": [
+      {
+        "label": "ELTE Centre for Economic and Regional Studies",
+        "type": "child",
+        "id": "https://ror.org/051ea1411"
+      }
+    ],
+    "status": "active",
+    "types": [
+      "education",
+      "funder"
+    ]
+  },
+  {
+    "admin": {
+      "created": {
+        "date": "2018-11-14",
+        "schema_version": "1.0"
+      },
+      "last_modified": {
+        "date": "2026-09-22",
+        "schema_version": "2.1"
+      }
+    },
+    "domains": [
+      "tsinghua.edu.cn"
+    ],
+    "established": 1911,
+    "external_ids": [
+      {
+        "all": [
+          "501100004147",
+          "501100004407",
+          "501100005150",
+          "501100019339"
+        ],
+        "preferred": "501100004147",
+        "type": "fundref"
+      },
+      {
+        "all": [
+          "grid.12527.33"
+        ],
+        "preferred": "grid.12527.33",
+        "type": "grid"
+      },
+      {
+        "all": [
+          "0000 0001 0662 3178"
+        ],
+        "preferred": null,
+        "type": "isni"
+      },
+      {
+        "all": [
+          "Q16955"
+        ],
+        "preferred": null,
+        "type": "wikidata"
+      }
+    ],
+    "id": "https://ror.org/03cve4549",
+    "links": [
+      {
+        "type": "website",
+        "value": "https://www.tsinghua.edu.cn"
+      },
+      {
+        "type": "wikipedia",
+        "value": "http://en.wikipedia.org/wiki/Tsinghua_University"
+      }
+    ],
+    "locations": [
+      {
+        "geonames_details": {
+          "continent_code": "AS",
+          "continent_name": "Asia",
+          "country_code": "CN",
+          "country_name": "China",
+          "country_subdivision_code": "BJ",
+          "country_subdivision_name": "Beijing",
+          "lat": 39.9075,
+          "lng": 116.39723,
+          "name": "Beijing"
+        },
+        "geonames_id": 1816670
+      }
+    ],
+    "names": [
+      {
+        "lang": null,
+        "types": [
+          "acronym"
+        ],
+        "value": "THU"
+      },
+      {
+        "lang": "en",
+        "types": [
+          "ror_display",
+          "label"
+        ],
+        "value": "Tsinghua University"
+      },
+      {
+        "lang": "zh",
+        "types": [
+          "label"
+        ],
+        "value": "清华大学"
+      }
+    ],
+    "relationships": [
+      {
+        "label": "Center for Life Sciences",
+        "type": "child",
+        "id": "https://ror.org/05kje8j93"
+      },
+      {
+        "label": "Collaborative Innovation Center of Quantum Matter",
+        "type": "child",
+        "id": "https://ror.org/03jn38r85"
+      },
+      {
+        "label": "State Key Laboratory on Integrated Optoelectronics",
+        "type": "child",
+        "id": "https://ror.org/00g102351"
+      },
+      {
+        "label": "The Synergetic Innovation Center for Advanced Materials",
+        "type": "child",
+        "id": "https://ror.org/05nzc1r88"
+      },
+      {
+        "label": "Tsinghua–Berkeley Shenzhen Institute",
+        "type": "child",
+        "id": "https://ror.org/02hhwwz98"
+      },
+      {
+        "label": "State Key Laboratory of Microwave and Digital Communication Technology",
+        "type": "child",
+        "id": "https://ror.org/00jxb4047"
+      },
+      {
+        "label": "State Key Laboratory of Tribology",
+        "type": "child",
+        "id": "https://ror.org/03h33sq24"
+      },
+      {
+        "label": "State Key Laboratory of Automobile Safety and Energy Conservation",
+        "type": "child",
+        "id": "https://ror.org/023ht6a36"
+      },
+      {
+        "label": "State Key Laboratory of Water and Sediment Science and Water Conservancy and Hydropower Engineering",
+        "type": "child",
+        "id": "https://ror.org/01ekf5a72"
+      },
+      {
+        "label": "State Key Laboratory of Precision Testing Technology and Instruments",
+        "type": "child",
+        "id": "https://ror.org/04r1ssz88"
+      },
+      {
+        "label": "State Key Laboratory of New Ceramics and Fine Processing",
+        "type": "child",
+        "id": "https://ror.org/01t8xrx60"
+      },
+      {
+        "label": "State Key Laboratory of Membrane Biology",
+        "type": "child",
+        "id": "https://ror.org/03mq8q210"
+      },
+      {
+        "label": "State Key Laboratory of Low-Dimensional Quantum Physics",
+        "type": "child",
+        "id": "https://ror.org/016g9tg59"
+      },
+      {
+        "label": "State Key Laboratory of Power System and Generation Equipment",
+        "type": "child",
+        "id": "https://ror.org/043evzg22"
+      },
+      {
+        "label": "Beijing Institute of Mathematical Sciences and Applications",
+        "type": "child",
+        "id": "https://ror.org/05t6hvr95"
+      },
+      {
+        "label": "International Centre for Engineering Education",
+        "type": "child",
+        "id": "https://ror.org/0320fj966"
+      },
+      {
+        "label": "Tsinghua Shenzhen International Graduate School",
+        "type": "child",
+        "id": "https://ror.org/01vceef04"
+      },
+      {
+        "label": "Beijing Hua Xin Hospital",
+        "type": "related",
+        "id": "https://ror.org/04k6zqn86"
+      },
+      {
+        "label": "Beijing Tsinghua Chang Gung Hospital",
+        "type": "related",
+        "id": "https://ror.org/050nfgr37"
+      },
+      {
+        "label": "Chinese Academy of Medical Sciences & Peking Union Medical College",
+        "type": "related",
+        "id": "https://ror.org/02drdmm93"
+      },
+      {
+        "label": "Peking Union Medical College Hospital",
+        "type": "related",
+        "id": "https://ror.org/04jztag35"
+      },
+      {
+        "label": "Beijing Proteome Research Center",
+        "type": "related",
+        "id": "https://ror.org/05pp5b412"
+      },
+      {
+        "label": "Asian Universities Alliance",
+        "type": "related",
+        "id": "https://ror.org/02tzjxp12"
+      }
+    ],
+    "status": "active",
+    "types": [
+      "education",
+      "funder"
+    ]
+  },
+  {
+    "admin": {
+      "created": {
+        "date": "2018-11-14",
+        "schema_version": "1.0"
+      },
+      "last_modified": {
+        "date": "2026-10-06",
+        "schema_version": "2.1"
+      }
+    },
+    "domains": [
+      "tum.de"
+    ],
+    "established": 1868,
+    "external_ids": [
+      {
+        "all": [
+          "501100005713",
+          "501100009375",
+          "501100013497",
+          "501100013810",
+          "501100009394"
+        ],
+        "preferred": "501100005713",
+        "type": "fundref"
+      },
+      {
+        "all": [
+          "grid.6936.a"
+        ],
+        "preferred": "grid.6936.a",
+        "type": "grid"
+      },
+      {
+        "all": [
+          "0000 0001 2322 2966"
+        ],
+        "preferred": null,
+        "type": "isni"
+      },
+      {
+        "all": [
+          "Q157808"
+        ],
+        "preferred": null,
+        "type": "wikidata"
+      }
+    ],
+    "id": "https://ror.org/02kkvpp62",
+    "links": [
+      {
+        "type": "website",
+        "value": "https://www.tum.de"
+      },
+      {
+        "type": "wikipedia",
+        "value": "http://en.wikipedia.org/wiki/Technische_Universit%C3%A4t_M%C3%BCnchen"
+      }
+    ],
+    "locations": [
+      {
+        "geonames_details": {
+          "continent_code": "EU",
+          "continent_name": "Europe",
+          "country_code": "DE",
+          "country_name": "Germany",
+          "country_subdivision_code": "BY",
+          "country_subdivision_name": "Bavaria",
+          "lat": 48.13743,
+          "lng": 11.57549,
+          "name": "Munich"
+        },
+        "geonames_id": 2867714
+      }
+    ],
+    "names": [
+      {
+        "lang": null,
+        "types": [
+          "acronym"
+        ],
+        "value": "TUM"
+      },
+      {
+        "lang": "en",
+        "types": [
+          "ror_display",
+          "label"
+        ],
+        "value": "Technical University of Munich"
+      },
+      {
+        "lang": "de",
+        "types": [
+          "alias"
+        ],
+        "value": "Technische Universitaet Muenchen"
+      },
+      {
+        "lang": "de",
+        "types": [
+          "label"
+        ],
+        "value": "Technische Universität München"
+      }
+    ],
+    "relationships": [
+      {
+        "label": "Centre for Advanced Laser Applications",
+        "type": "child",
+        "id": "https://ror.org/04j4kfb22"
+      },
+      {
+        "label": "Institute of Biological and Medical Imaging",
+        "type": "child",
+        "id": "https://ror.org/05g95eg64"
+      },
+      {
+        "label": "Center for Integrated Protein Science Munich",
+        "type": "child",
+        "id": "https://ror.org/032hzb643"
+      },
+      {
+        "label": "Munich Cluster for Systems Neurology",
+        "type": "child",
+        "id": "https://ror.org/025z3z560"
+      },
+      {
+        "label": "Deutsches Herzzentrum München",
+        "type": "child",
+        "id": "https://ror.org/04hbwba26"
+      },
+      {
+        "label": "Munich Center for Machine Learning",
+        "type": "child",
+        "id": "https://ror.org/02nfy3535"
+      },
+      {
+        "label": "Hochschule für Politik München",
+        "type": "child",
+        "id": "https://ror.org/04e2f5g27"
+      },
+      {
+        "label": "Else Kröner Fresenius Zentrum für Ernährungsmedizin",
+        "type": "child",
+        "id": "https://ror.org/024fs3v18"
+      },
+      {
+        "label": "Berufsgenossenschaftliche Unfallklinik Murnau",
+        "type": "related",
+        "id": "https://ror.org/01fgmnw14"
+      },
+      {
+        "label": "TU9",
+        "type": "related",
+        "id": "https://ror.org/02nx8n605"
+      },
+      {
+        "label": "Centre for Tactile Internet with Human-in-the-Loop",
+        "type": "related",
+        "id": "https://ror.org/02kfbaj13"
+      },
+      {
+        "label": "Leibniz-Institute for Food Systems Biology at the Technical University of Munich",
+        "type": "related",
+        "id": "https://ror.org/04sy7nb49"
+      },
+      {
+        "label": "TUM Klinikum",
+        "type": "child",
+        "id": "https://ror.org/04jc43x05"
+      }
+    ],
+    "status": "active",
+    "types": [
+      "education",
+      "funder"
+    ]
+  }
+]

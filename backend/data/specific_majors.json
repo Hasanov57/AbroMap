@@ -1,0 +1,1305 @@
+{
+  "source": "AbroMap curated specific-major extension mapped to ISCED-F 2013",
+  "majors": [
+    {
+      "slug": "education-studies",
+      "name_en": "Education Studies",
+      "isced_code": "0111"
+    },
+    {
+      "slug": "curriculum-studies",
+      "name_en": "Curriculum Studies",
+      "isced_code": "0111"
+    },
+    {
+      "slug": "educational-technology",
+      "name_en": "Educational Technology",
+      "isced_code": "0111"
+    },
+    {
+      "slug": "special-education",
+      "name_en": "Special Education",
+      "isced_code": "0111"
+    },
+    {
+      "slug": "educational-psychology",
+      "name_en": "Educational Psychology",
+      "isced_code": "0111"
+    },
+    {
+      "slug": "education-policy",
+      "name_en": "Education Policy",
+      "isced_code": "0111"
+    },
+    {
+      "slug": "early-childhood-education",
+      "name_en": "Early Childhood Education",
+      "isced_code": "0112"
+    },
+    {
+      "slug": "preschool-education",
+      "name_en": "Preschool Education",
+      "isced_code": "0112"
+    },
+    {
+      "slug": "primary-education",
+      "name_en": "Primary Education",
+      "isced_code": "0113"
+    },
+    {
+      "slug": "elementary-education",
+      "name_en": "Elementary Education",
+      "isced_code": "0113"
+    },
+    {
+      "slug": "secondary-education",
+      "name_en": "Secondary Education",
+      "isced_code": "0114"
+    },
+    {
+      "slug": "mathematics-education",
+      "name_en": "Mathematics Education",
+      "isced_code": "0114"
+    },
+    {
+      "slug": "science-education",
+      "name_en": "Science Education",
+      "isced_code": "0114"
+    },
+    {
+      "slug": "language-education",
+      "name_en": "Language Education",
+      "isced_code": "0114"
+    },
+    {
+      "slug": "film-studies",
+      "name_en": "Film Studies",
+      "isced_code": "0211"
+    },
+    {
+      "slug": "animation",
+      "name_en": "Animation",
+      "isced_code": "0211"
+    },
+    {
+      "slug": "digital-media",
+      "name_en": "Digital Media",
+      "isced_code": "0211"
+    },
+    {
+      "slug": "photography",
+      "name_en": "Photography",
+      "isced_code": "0211"
+    },
+    {
+      "slug": "game-design",
+      "name_en": "Game Design",
+      "isced_code": "0211"
+    },
+    {
+      "slug": "media-production",
+      "name_en": "Media Production",
+      "isced_code": "0211"
+    },
+    {
+      "slug": "fashion-design",
+      "name_en": "Fashion Design",
+      "isced_code": "0212"
+    },
+    {
+      "slug": "interior-design",
+      "name_en": "Interior Design",
+      "isced_code": "0212"
+    },
+    {
+      "slug": "industrial-design",
+      "name_en": "Industrial Design",
+      "isced_code": "0212"
+    },
+    {
+      "slug": "product-design",
+      "name_en": "Product Design",
+      "isced_code": "0212"
+    },
+    {
+      "slug": "textile-design",
+      "name_en": "Textile Design",
+      "isced_code": "0212"
+    },
+    {
+      "slug": "fine-art",
+      "name_en": "Fine Art",
+      "isced_code": "0213"
+    },
+    {
+      "slug": "painting",
+      "name_en": "Painting",
+      "isced_code": "0213"
+    },
+    {
+      "slug": "sculpture",
+      "name_en": "Sculpture",
+      "isced_code": "0213"
+    },
+    {
+      "slug": "illustration",
+      "name_en": "Illustration",
+      "isced_code": "0213"
+    },
+    {
+      "slug": "art-history",
+      "name_en": "Art History",
+      "isced_code": "0213"
+    },
+    {
+      "slug": "graphic-design",
+      "name_en": "Graphic Design",
+      "isced_code": "0213"
+    },
+    {
+      "slug": "ceramics",
+      "name_en": "Ceramics",
+      "isced_code": "0214"
+    },
+    {
+      "slug": "jewellery-design",
+      "name_en": "Jewellery Design",
+      "isced_code": "0214"
+    },
+    {
+      "slug": "music",
+      "name_en": "Music",
+      "isced_code": "0215"
+    },
+    {
+      "slug": "theatre",
+      "name_en": "Theatre",
+      "isced_code": "0215"
+    },
+    {
+      "slug": "dance",
+      "name_en": "Dance",
+      "isced_code": "0215"
+    },
+    {
+      "slug": "performing-arts",
+      "name_en": "Performing Arts",
+      "isced_code": "0215"
+    },
+    {
+      "slug": "music-composition",
+      "name_en": "Music Composition",
+      "isced_code": "0215"
+    },
+    {
+      "slug": "theology",
+      "name_en": "Theology",
+      "isced_code": "0221"
+    },
+    {
+      "slug": "religious-studies",
+      "name_en": "Religious Studies",
+      "isced_code": "0221"
+    },
+    {
+      "slug": "history",
+      "name_en": "History",
+      "isced_code": "0222"
+    },
+    {
+      "slug": "archaeology",
+      "name_en": "Archaeology",
+      "isced_code": "0222"
+    },
+    {
+      "slug": "cultural-heritage",
+      "name_en": "Cultural Heritage",
+      "isced_code": "0222"
+    },
+    {
+      "slug": "museum-studies",
+      "name_en": "Museum Studies",
+      "isced_code": "0222"
+    },
+    {
+      "slug": "classical-studies",
+      "name_en": "Classical Studies",
+      "isced_code": "0222"
+    },
+    {
+      "slug": "philosophy",
+      "name_en": "Philosophy",
+      "isced_code": "0223"
+    },
+    {
+      "slug": "ethics",
+      "name_en": "Ethics",
+      "isced_code": "0223"
+    },
+    {
+      "slug": "english-language",
+      "name_en": "English Language",
+      "isced_code": "0231"
+    },
+    {
+      "slug": "translation-studies",
+      "name_en": "Translation Studies",
+      "isced_code": "0231"
+    },
+    {
+      "slug": "applied-linguistics",
+      "name_en": "Applied Linguistics",
+      "isced_code": "0231"
+    },
+    {
+      "slug": "german-studies",
+      "name_en": "German Studies",
+      "isced_code": "0231"
+    },
+    {
+      "slug": "chinese-studies",
+      "name_en": "Chinese Studies",
+      "isced_code": "0231"
+    },
+    {
+      "slug": "russian-studies",
+      "name_en": "Russian Studies",
+      "isced_code": "0231"
+    },
+    {
+      "slug": "linguistics",
+      "name_en": "Linguistics",
+      "isced_code": "0232"
+    },
+    {
+      "slug": "literature",
+      "name_en": "Literature",
+      "isced_code": "0232"
+    },
+    {
+      "slug": "comparative-literature",
+      "name_en": "Comparative Literature",
+      "isced_code": "0232"
+    },
+    {
+      "slug": "creative-writing",
+      "name_en": "Creative Writing",
+      "isced_code": "0232"
+    },
+    {
+      "slug": "economics",
+      "name_en": "Economics",
+      "isced_code": "0311"
+    },
+    {
+      "slug": "development-economics",
+      "name_en": "Development Economics",
+      "isced_code": "0311"
+    },
+    {
+      "slug": "econometrics",
+      "name_en": "Econometrics",
+      "isced_code": "0311"
+    },
+    {
+      "slug": "international-economics",
+      "name_en": "International Economics",
+      "isced_code": "0311"
+    },
+    {
+      "slug": "behavioral-economics",
+      "name_en": "Behavioral Economics",
+      "isced_code": "0311"
+    },
+    {
+      "slug": "political-science",
+      "name_en": "Political Science",
+      "isced_code": "0312"
+    },
+    {
+      "slug": "international-relations",
+      "name_en": "International Relations",
+      "isced_code": "0312"
+    },
+    {
+      "slug": "public-policy",
+      "name_en": "Public Policy",
+      "isced_code": "0312"
+    },
+    {
+      "slug": "public-administration",
+      "name_en": "Public Administration",
+      "isced_code": "0312"
+    },
+    {
+      "slug": "european-studies",
+      "name_en": "European Studies",
+      "isced_code": "0312"
+    },
+    {
+      "slug": "psychology",
+      "name_en": "Psychology",
+      "isced_code": "0313"
+    },
+    {
+      "slug": "clinical-psychology",
+      "name_en": "Clinical Psychology",
+      "isced_code": "0313"
+    },
+    {
+      "slug": "cognitive-science",
+      "name_en": "Cognitive Science",
+      "isced_code": "0313"
+    },
+    {
+      "slug": "neuroscience",
+      "name_en": "Neuroscience",
+      "isced_code": "0313"
+    },
+    {
+      "slug": "sociology",
+      "name_en": "Sociology",
+      "isced_code": "0314"
+    },
+    {
+      "slug": "anthropology",
+      "name_en": "Anthropology",
+      "isced_code": "0314"
+    },
+    {
+      "slug": "criminology",
+      "name_en": "Criminology",
+      "isced_code": "0314"
+    },
+    {
+      "slug": "gender-studies",
+      "name_en": "Gender Studies",
+      "isced_code": "0314"
+    },
+    {
+      "slug": "social-policy",
+      "name_en": "Social Policy",
+      "isced_code": "0314"
+    },
+    {
+      "slug": "journalism",
+      "name_en": "Journalism",
+      "isced_code": "0321"
+    },
+    {
+      "slug": "media-studies",
+      "name_en": "Media Studies",
+      "isced_code": "0321"
+    },
+    {
+      "slug": "communication-studies",
+      "name_en": "Communication Studies",
+      "isced_code": "0321"
+    },
+    {
+      "slug": "public-relations",
+      "name_en": "Public Relations",
+      "isced_code": "0321"
+    },
+    {
+      "slug": "library-science",
+      "name_en": "Library Science",
+      "isced_code": "0322"
+    },
+    {
+      "slug": "information-science",
+      "name_en": "Information Science",
+      "isced_code": "0322"
+    },
+    {
+      "slug": "archival-studies",
+      "name_en": "Archival Studies",
+      "isced_code": "0322"
+    },
+    {
+      "slug": "accounting",
+      "name_en": "Accounting",
+      "isced_code": "0411"
+    },
+    {
+      "slug": "taxation",
+      "name_en": "Taxation",
+      "isced_code": "0411"
+    },
+    {
+      "slug": "auditing",
+      "name_en": "Auditing",
+      "isced_code": "0411"
+    },
+    {
+      "slug": "finance",
+      "name_en": "Finance",
+      "isced_code": "0412"
+    },
+    {
+      "slug": "banking",
+      "name_en": "Banking",
+      "isced_code": "0412"
+    },
+    {
+      "slug": "insurance",
+      "name_en": "Insurance",
+      "isced_code": "0412"
+    },
+    {
+      "slug": "financial-technology",
+      "name_en": "Financial Technology",
+      "isced_code": "0412"
+    },
+    {
+      "slug": "investment-management",
+      "name_en": "Investment Management",
+      "isced_code": "0412"
+    },
+    {
+      "slug": "business-administration",
+      "name_en": "Business Administration",
+      "isced_code": "0413"
+    },
+    {
+      "slug": "management",
+      "name_en": "Management",
+      "isced_code": "0413"
+    },
+    {
+      "slug": "human-resource-management",
+      "name_en": "Human Resource Management",
+      "isced_code": "0413"
+    },
+    {
+      "slug": "international-business",
+      "name_en": "International Business",
+      "isced_code": "0413"
+    },
+    {
+      "slug": "entrepreneurship",
+      "name_en": "Entrepreneurship",
+      "isced_code": "0413"
+    },
+    {
+      "slug": "project-management",
+      "name_en": "Project Management",
+      "isced_code": "0413"
+    },
+    {
+      "slug": "operations-management",
+      "name_en": "Operations Management",
+      "isced_code": "0413"
+    },
+    {
+      "slug": "supply-chain-management",
+      "name_en": "Supply Chain Management",
+      "isced_code": "0413"
+    },
+    {
+      "slug": "marketing",
+      "name_en": "Marketing",
+      "isced_code": "0414"
+    },
+    {
+      "slug": "digital-marketing",
+      "name_en": "Digital Marketing",
+      "isced_code": "0414"
+    },
+    {
+      "slug": "advertising",
+      "name_en": "Advertising",
+      "isced_code": "0414"
+    },
+    {
+      "slug": "office-administration",
+      "name_en": "Office Administration",
+      "isced_code": "0415"
+    },
+    {
+      "slug": "retail-management",
+      "name_en": "Retail Management",
+      "isced_code": "0416"
+    },
+    {
+      "slug": "e-commerce",
+      "name_en": "E-Commerce",
+      "isced_code": "0416"
+    },
+    {
+      "slug": "business-analytics",
+      "name_en": "Business Analytics",
+      "isced_code": "0417"
+    },
+    {
+      "slug": "leadership-studies",
+      "name_en": "Leadership Studies",
+      "isced_code": "0417"
+    },
+    {
+      "slug": "law",
+      "name_en": "Law",
+      "isced_code": "0421"
+    },
+    {
+      "slug": "international-law",
+      "name_en": "International Law",
+      "isced_code": "0421"
+    },
+    {
+      "slug": "corporate-law",
+      "name_en": "Corporate Law",
+      "isced_code": "0421"
+    },
+    {
+      "slug": "human-rights-law",
+      "name_en": "Human Rights Law",
+      "isced_code": "0421"
+    },
+    {
+      "slug": "european-law",
+      "name_en": "European Law",
+      "isced_code": "0421"
+    },
+    {
+      "slug": "criminal-law",
+      "name_en": "Criminal Law",
+      "isced_code": "0421"
+    },
+    {
+      "slug": "biology",
+      "name_en": "Biology",
+      "isced_code": "0511"
+    },
+    {
+      "slug": "molecular-biology",
+      "name_en": "Molecular Biology",
+      "isced_code": "0511"
+    },
+    {
+      "slug": "genetics",
+      "name_en": "Genetics",
+      "isced_code": "0511"
+    },
+    {
+      "slug": "microbiology",
+      "name_en": "Microbiology",
+      "isced_code": "0511"
+    },
+    {
+      "slug": "biotechnology",
+      "name_en": "Biotechnology",
+      "isced_code": "0511"
+    },
+    {
+      "slug": "bioinformatics",
+      "name_en": "Bioinformatics",
+      "isced_code": "0511"
+    },
+    {
+      "slug": "ecology",
+      "name_en": "Ecology",
+      "isced_code": "0511"
+    },
+    {
+      "slug": "biochemistry",
+      "name_en": "Biochemistry",
+      "isced_code": "0512"
+    },
+    {
+      "slug": "biomedical-science",
+      "name_en": "Biomedical Science",
+      "isced_code": "0512"
+    },
+    {
+      "slug": "environmental-science",
+      "name_en": "Environmental Science",
+      "isced_code": "0521"
+    },
+    {
+      "slug": "environmental-management",
+      "name_en": "Environmental Management",
+      "isced_code": "0521"
+    },
+    {
+      "slug": "sustainability-studies",
+      "name_en": "Sustainability Studies",
+      "isced_code": "0521"
+    },
+    {
+      "slug": "climate-science",
+      "name_en": "Climate Science",
+      "isced_code": "0521"
+    },
+    {
+      "slug": "conservation-biology",
+      "name_en": "Conservation Biology",
+      "isced_code": "0522"
+    },
+    {
+      "slug": "wildlife-biology",
+      "name_en": "Wildlife Biology",
+      "isced_code": "0522"
+    },
+    {
+      "slug": "chemistry",
+      "name_en": "Chemistry",
+      "isced_code": "0531"
+    },
+    {
+      "slug": "analytical-chemistry",
+      "name_en": "Analytical Chemistry",
+      "isced_code": "0531"
+    },
+    {
+      "slug": "materials-chemistry",
+      "name_en": "Materials Chemistry",
+      "isced_code": "0531"
+    },
+    {
+      "slug": "geology",
+      "name_en": "Geology",
+      "isced_code": "0532"
+    },
+    {
+      "slug": "geophysics",
+      "name_en": "Geophysics",
+      "isced_code": "0532"
+    },
+    {
+      "slug": "geography",
+      "name_en": "Geography",
+      "isced_code": "0532"
+    },
+    {
+      "slug": "meteorology",
+      "name_en": "Meteorology",
+      "isced_code": "0532"
+    },
+    {
+      "slug": "oceanography",
+      "name_en": "Oceanography",
+      "isced_code": "0532"
+    },
+    {
+      "slug": "physics",
+      "name_en": "Physics",
+      "isced_code": "0533"
+    },
+    {
+      "slug": "applied-physics",
+      "name_en": "Applied Physics",
+      "isced_code": "0533"
+    },
+    {
+      "slug": "astrophysics",
+      "name_en": "Astrophysics",
+      "isced_code": "0533"
+    },
+    {
+      "slug": "quantum-physics",
+      "name_en": "Quantum Physics",
+      "isced_code": "0533"
+    },
+    {
+      "slug": "mathematics",
+      "name_en": "Mathematics",
+      "isced_code": "0541"
+    },
+    {
+      "slug": "applied-mathematics",
+      "name_en": "Applied Mathematics",
+      "isced_code": "0541"
+    },
+    {
+      "slug": "computational-mathematics",
+      "name_en": "Computational Mathematics",
+      "isced_code": "0541"
+    },
+    {
+      "slug": "statistics",
+      "name_en": "Statistics",
+      "isced_code": "0542"
+    },
+    {
+      "slug": "applied-statistics",
+      "name_en": "Applied Statistics",
+      "isced_code": "0542"
+    },
+    {
+      "slug": "actuarial-science",
+      "name_en": "Actuarial Science",
+      "isced_code": "0542"
+    },
+    {
+      "slug": "digital-literacy",
+      "name_en": "Digital Literacy",
+      "isced_code": "0611"
+    },
+    {
+      "slug": "computer-applications",
+      "name_en": "Computer Applications",
+      "isced_code": "0611"
+    },
+    {
+      "slug": "cybersecurity",
+      "name_en": "Cybersecurity",
+      "isced_code": "0612"
+    },
+    {
+      "slug": "network-engineering",
+      "name_en": "Network Engineering",
+      "isced_code": "0612"
+    },
+    {
+      "slug": "database-administration",
+      "name_en": "Database Administration",
+      "isced_code": "0612"
+    },
+    {
+      "slug": "cloud-computing",
+      "name_en": "Cloud Computing",
+      "isced_code": "0612"
+    },
+    {
+      "slug": "information-security",
+      "name_en": "Information Security",
+      "isced_code": "0612"
+    },
+    {
+      "slug": "computer-networks",
+      "name_en": "Computer Networks",
+      "isced_code": "0612"
+    },
+    {
+      "slug": "computer-science",
+      "name_en": "Computer Science",
+      "isced_code": "0613"
+    },
+    {
+      "slug": "information-technology",
+      "name_en": "Information Technology",
+      "isced_code": "0613"
+    },
+    {
+      "slug": "artificial-intelligence",
+      "name_en": "Artificial Intelligence",
+      "isced_code": "0613"
+    },
+    {
+      "slug": "data-science",
+      "name_en": "Data Science",
+      "isced_code": "0613"
+    },
+    {
+      "slug": "software-engineering",
+      "name_en": "Software Engineering",
+      "isced_code": "0613"
+    },
+    {
+      "slug": "information-systems",
+      "name_en": "Information Systems",
+      "isced_code": "0613"
+    },
+    {
+      "slug": "machine-learning",
+      "name_en": "Machine Learning",
+      "isced_code": "0613"
+    },
+    {
+      "slug": "data-analytics",
+      "name_en": "Data Analytics",
+      "isced_code": "0613"
+    },
+    {
+      "slug": "human-computer-interaction",
+      "name_en": "Human-Computer Interaction",
+      "isced_code": "0613"
+    },
+    {
+      "slug": "web-development",
+      "name_en": "Web Development",
+      "isced_code": "0613"
+    },
+    {
+      "slug": "mobile-application-development",
+      "name_en": "Mobile Application Development",
+      "isced_code": "0613"
+    },
+    {
+      "slug": "game-development",
+      "name_en": "Game Development",
+      "isced_code": "0613"
+    },
+    {
+      "slug": "data-engineering",
+      "name_en": "Data Engineering",
+      "isced_code": "0613"
+    },
+    {
+      "slug": "computational-linguistics",
+      "name_en": "Computational Linguistics",
+      "isced_code": "0613"
+    },
+    {
+      "slug": "chemical-engineering",
+      "name_en": "Chemical Engineering",
+      "isced_code": "0711"
+    },
+    {
+      "slug": "process-engineering",
+      "name_en": "Process Engineering",
+      "isced_code": "0711"
+    },
+    {
+      "slug": "petroleum-engineering",
+      "name_en": "Petroleum Engineering",
+      "isced_code": "0711"
+    },
+    {
+      "slug": "environmental-engineering",
+      "name_en": "Environmental Engineering",
+      "isced_code": "0712"
+    },
+    {
+      "slug": "renewable-energy-engineering",
+      "name_en": "Renewable Energy Engineering",
+      "isced_code": "0712"
+    },
+    {
+      "slug": "electrical-engineering",
+      "name_en": "Electrical Engineering",
+      "isced_code": "0713"
+    },
+    {
+      "slug": "energy-engineering",
+      "name_en": "Energy Engineering",
+      "isced_code": "0713"
+    },
+    {
+      "slug": "power-systems-engineering",
+      "name_en": "Power Systems Engineering",
+      "isced_code": "0713"
+    },
+    {
+      "slug": "electronic-engineering",
+      "name_en": "Electronic Engineering",
+      "isced_code": "0714"
+    },
+    {
+      "slug": "mechatronics",
+      "name_en": "Mechatronics",
+      "isced_code": "0714"
+    },
+    {
+      "slug": "automation-engineering",
+      "name_en": "Automation Engineering",
+      "isced_code": "0714"
+    },
+    {
+      "slug": "robotics-engineering",
+      "name_en": "Robotics Engineering",
+      "isced_code": "0714"
+    },
+    {
+      "slug": "computer-engineering",
+      "name_en": "Computer Engineering",
+      "isced_code": "0714"
+    },
+    {
+      "slug": "telecommunications-engineering",
+      "name_en": "Telecommunications Engineering",
+      "isced_code": "0714"
+    },
+    {
+      "slug": "mechanical-engineering",
+      "name_en": "Mechanical Engineering",
+      "isced_code": "0715"
+    },
+    {
+      "slug": "manufacturing-engineering",
+      "name_en": "Manufacturing Engineering",
+      "isced_code": "0715"
+    },
+    {
+      "slug": "industrial-engineering",
+      "name_en": "Industrial Engineering",
+      "isced_code": "0715"
+    },
+    {
+      "slug": "automotive-engineering",
+      "name_en": "Automotive Engineering",
+      "isced_code": "0715"
+    },
+    {
+      "slug": "materials-engineering",
+      "name_en": "Materials Engineering",
+      "isced_code": "0715"
+    },
+    {
+      "slug": "aerospace-engineering",
+      "name_en": "Aerospace Engineering",
+      "isced_code": "0716"
+    },
+    {
+      "slug": "aeronautical-engineering",
+      "name_en": "Aeronautical Engineering",
+      "isced_code": "0716"
+    },
+    {
+      "slug": "naval-architecture",
+      "name_en": "Naval Architecture",
+      "isced_code": "0716"
+    },
+    {
+      "slug": "marine-engineering",
+      "name_en": "Marine Engineering",
+      "isced_code": "0716"
+    },
+    {
+      "slug": "food-science",
+      "name_en": "Food Science",
+      "isced_code": "0721"
+    },
+    {
+      "slug": "food-engineering",
+      "name_en": "Food Engineering",
+      "isced_code": "0721"
+    },
+    {
+      "slug": "materials-science",
+      "name_en": "Materials Science",
+      "isced_code": "0722"
+    },
+    {
+      "slug": "polymer-engineering",
+      "name_en": "Polymer Engineering",
+      "isced_code": "0722"
+    },
+    {
+      "slug": "textile-engineering",
+      "name_en": "Textile Engineering",
+      "isced_code": "0723"
+    },
+    {
+      "slug": "fashion-technology",
+      "name_en": "Fashion Technology",
+      "isced_code": "0723"
+    },
+    {
+      "slug": "mining-engineering",
+      "name_en": "Mining Engineering",
+      "isced_code": "0724"
+    },
+    {
+      "slug": "geological-engineering",
+      "name_en": "Geological Engineering",
+      "isced_code": "0724"
+    },
+    {
+      "slug": "architecture",
+      "name_en": "Architecture",
+      "isced_code": "0731"
+    },
+    {
+      "slug": "urban-planning",
+      "name_en": "Urban Planning",
+      "isced_code": "0731"
+    },
+    {
+      "slug": "landscape-architecture",
+      "name_en": "Landscape Architecture",
+      "isced_code": "0731"
+    },
+    {
+      "slug": "interior-architecture",
+      "name_en": "Interior Architecture",
+      "isced_code": "0731"
+    },
+    {
+      "slug": "civil-engineering",
+      "name_en": "Civil Engineering",
+      "isced_code": "0732"
+    },
+    {
+      "slug": "structural-engineering",
+      "name_en": "Structural Engineering",
+      "isced_code": "0732"
+    },
+    {
+      "slug": "construction-management",
+      "name_en": "Construction Management",
+      "isced_code": "0732"
+    },
+    {
+      "slug": "geotechnical-engineering",
+      "name_en": "Geotechnical Engineering",
+      "isced_code": "0732"
+    },
+    {
+      "slug": "agriculture",
+      "name_en": "Agriculture",
+      "isced_code": "0811"
+    },
+    {
+      "slug": "agronomy",
+      "name_en": "Agronomy",
+      "isced_code": "0811"
+    },
+    {
+      "slug": "animal-science",
+      "name_en": "Animal Science",
+      "isced_code": "0811"
+    },
+    {
+      "slug": "agricultural-economics",
+      "name_en": "Agricultural Economics",
+      "isced_code": "0811"
+    },
+    {
+      "slug": "horticulture",
+      "name_en": "Horticulture",
+      "isced_code": "0812"
+    },
+    {
+      "slug": "landscape-horticulture",
+      "name_en": "Landscape Horticulture",
+      "isced_code": "0812"
+    },
+    {
+      "slug": "forestry",
+      "name_en": "Forestry",
+      "isced_code": "0821"
+    },
+    {
+      "slug": "forest-management",
+      "name_en": "Forest Management",
+      "isced_code": "0821"
+    },
+    {
+      "slug": "fisheries",
+      "name_en": "Fisheries",
+      "isced_code": "0831"
+    },
+    {
+      "slug": "aquaculture",
+      "name_en": "Aquaculture",
+      "isced_code": "0831"
+    },
+    {
+      "slug": "marine-biology",
+      "name_en": "Marine Biology",
+      "isced_code": "0831"
+    },
+    {
+      "slug": "veterinary-medicine",
+      "name_en": "Veterinary Medicine",
+      "isced_code": "0841"
+    },
+    {
+      "slug": "veterinary-science",
+      "name_en": "Veterinary Science",
+      "isced_code": "0841"
+    },
+    {
+      "slug": "dentistry",
+      "name_en": "Dentistry",
+      "isced_code": "0911"
+    },
+    {
+      "slug": "dental-hygiene",
+      "name_en": "Dental Hygiene",
+      "isced_code": "0911"
+    },
+    {
+      "slug": "medicine",
+      "name_en": "Medicine",
+      "isced_code": "0912"
+    },
+    {
+      "slug": "medical-science",
+      "name_en": "Medical Science",
+      "isced_code": "0912"
+    },
+    {
+      "slug": "public-health",
+      "name_en": "Public Health",
+      "isced_code": "0912"
+    },
+    {
+      "slug": "nursing",
+      "name_en": "Nursing",
+      "isced_code": "0913"
+    },
+    {
+      "slug": "midwifery",
+      "name_en": "Midwifery",
+      "isced_code": "0913"
+    },
+    {
+      "slug": "medical-imaging",
+      "name_en": "Medical Imaging",
+      "isced_code": "0914"
+    },
+    {
+      "slug": "radiography",
+      "name_en": "Radiography",
+      "isced_code": "0914"
+    },
+    {
+      "slug": "clinical-laboratory-science",
+      "name_en": "Clinical Laboratory Science",
+      "isced_code": "0914"
+    },
+    {
+      "slug": "physiotherapy",
+      "name_en": "Physiotherapy",
+      "isced_code": "0915"
+    },
+    {
+      "slug": "occupational-therapy",
+      "name_en": "Occupational Therapy",
+      "isced_code": "0915"
+    },
+    {
+      "slug": "speech-therapy",
+      "name_en": "Speech Therapy",
+      "isced_code": "0915"
+    },
+    {
+      "slug": "pharmacy",
+      "name_en": "Pharmacy",
+      "isced_code": "0916"
+    },
+    {
+      "slug": "pharmaceutical-science",
+      "name_en": "Pharmaceutical Science",
+      "isced_code": "0916"
+    },
+    {
+      "slug": "traditional-medicine",
+      "name_en": "Traditional Medicine",
+      "isced_code": "0917"
+    },
+    {
+      "slug": "gerontology",
+      "name_en": "Gerontology",
+      "isced_code": "0921"
+    },
+    {
+      "slug": "child-development",
+      "name_en": "Child Development",
+      "isced_code": "0922"
+    },
+    {
+      "slug": "youth-work",
+      "name_en": "Youth Work",
+      "isced_code": "0922"
+    },
+    {
+      "slug": "social-work",
+      "name_en": "Social Work",
+      "isced_code": "0923"
+    },
+    {
+      "slug": "counselling",
+      "name_en": "Counselling",
+      "isced_code": "0923"
+    },
+    {
+      "slug": "home-economics",
+      "name_en": "Home Economics",
+      "isced_code": "1011"
+    },
+    {
+      "slug": "cosmetology",
+      "name_en": "Cosmetology",
+      "isced_code": "1012"
+    },
+    {
+      "slug": "hospitality-management",
+      "name_en": "Hospitality Management",
+      "isced_code": "1013"
+    },
+    {
+      "slug": "culinary-arts",
+      "name_en": "Culinary Arts",
+      "isced_code": "1013"
+    },
+    {
+      "slug": "hotel-management",
+      "name_en": "Hotel Management",
+      "isced_code": "1013"
+    },
+    {
+      "slug": "sports-science",
+      "name_en": "Sports Science",
+      "isced_code": "1014"
+    },
+    {
+      "slug": "sports-management",
+      "name_en": "Sports Management",
+      "isced_code": "1014"
+    },
+    {
+      "slug": "physical-education",
+      "name_en": "Physical Education",
+      "isced_code": "1014"
+    },
+    {
+      "slug": "tourism",
+      "name_en": "Tourism",
+      "isced_code": "1015"
+    },
+    {
+      "slug": "tourism-management",
+      "name_en": "Tourism Management",
+      "isced_code": "1015"
+    },
+    {
+      "slug": "leisure-studies",
+      "name_en": "Leisure Studies",
+      "isced_code": "1015"
+    },
+    {
+      "slug": "environmental-health",
+      "name_en": "Environmental Health",
+      "isced_code": "1021"
+    },
+    {
+      "slug": "occupational-health-and-safety",
+      "name_en": "Occupational Health and Safety",
+      "isced_code": "1022"
+    },
+    {
+      "slug": "defence-studies",
+      "name_en": "Defence Studies",
+      "isced_code": "1031"
+    },
+    {
+      "slug": "security-studies",
+      "name_en": "Security Studies",
+      "isced_code": "1032"
+    },
+    {
+      "slug": "criminal-justice",
+      "name_en": "Criminal Justice",
+      "isced_code": "1032"
+    },
+    {
+      "slug": "logistics",
+      "name_en": "Logistics",
+      "isced_code": "1041"
+    },
+    {
+      "slug": "transport-management",
+      "name_en": "Transport Management",
+      "isced_code": "1041"
+    },
+    {
+      "slug": "aviation-management",
+      "name_en": "Aviation Management",
+      "isced_code": "1041"
+    }
+  ]
+}

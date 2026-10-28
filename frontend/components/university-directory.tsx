@@ -1,124 +1,74 @@
 "use client";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { Search, ArrowRight } from "lucide-react";
 import { useSearchParams } from "next/navigation";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { api } from "@/lib/api";
-import type { University } from "@/lib/types";
+import { countryName } from "@/lib/countries";
+import type { Country, UniversityPage } from "@/lib/types";
+
 export function UniversityDirectory() {
-  const t = useTranslations("directory"),
-    common = useTranslations("common"),
-    country = useTranslations("countryNames");
+  const locale = useLocale(), t = useTranslations("directory"), common = useTranslations("common");
   const params = useSearchParams();
-  const [rows, setRows] = useState<University[]>([]),
-    [search, setSearch] = useState(""),
-    [filter, setFilter] = useState(params.get("country") || ""),
-    [error, setError] = useState(false),
-    [loading, setLoading] = useState(true);
+  const [data, setData] = useState<UniversityPage | null>(null);
+  const [countries, setCountries] = useState<Country[]>([]);
+  const [search, setSearch] = useState("");
+  const [filter, setFilter] = useState(params.get("country") || "");
+  const [page, setPage] = useState(1);
+  const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(true);
+  useEffect(() => { api.countries(locale).then(setCountries).catch(() => {}); }, [locale]);
   useEffect(() => {
-    api
-      .universities()
-      .then(setRows)
-      .catch(() => setError(true))
-      .finally(() => setLoading(false));
-  }, []);
-  const visible = useMemo(
-    () =>
-      rows.filter(
-        (x) =>
-          (!filter || x.country === filter) &&
-          x.name.toLowerCase().includes(search.toLowerCase()),
-      ),
-    [rows, filter, search],
-  );
+    let live = true;
+    const timer = window.setTimeout(() => {
+      setLoading(true);
+      setError(false);
+      api.universitiesPage({ page, page_size: 20, search, country: filter })
+        .then((rows) => { if (live) setData(rows); })
+        .catch(() => { if (live) setError(true); })
+        .finally(() => { if (live) setLoading(false); });
+    }, 250);
+    return () => { live = false; window.clearTimeout(timer); };
+  }, [search, filter, page]);
   return (
-    <div className="page">
-      <div className="container">
-        <div className="page-heading">
-          <h1>{t("title")}</h1>
-          <p>{t("subtitle")}</p>
+    <div className="page"><div className="container">
+      <div className="page-heading"><h1>{t("title")}</h1><p>{t("subtitle")}</p></div>
+      <div className="filters">
+        <div style={{ position: "relative", flex: "1 1 260px" }}>
+          <Search size={18} style={{ position: "absolute", left: 14, top: 15, color: "#64748b" }} />
+          <input className="input" style={{ paddingLeft: 42 }} placeholder={t("searchPlaceholder")}
+            value={search} onChange={(event) => { setSearch(event.target.value); setPage(1); }} />
         </div>
-        <div className="filters">
-          <div style={{ position: "relative", flex: "1 1 260px" }}>
-            <Search
-              size={18}
-              style={{
-                position: "absolute",
-                left: 14,
-                top: 15,
-                color: "#64748b",
-              }}
-            />
-            <input
-              className="input"
-              style={{ paddingLeft: 42 }}
-              placeholder={t("searchPlaceholder")}
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-            />
-          </div>
-          <select
-            className="input"
-            style={{ width: 200 }}
-            value={filter}
-            onChange={(e) => setFilter(e.target.value)}
-            aria-label={common("country")}
-          >
-            <option value="">{common("all")}</option>
-            {["DE", "IT", "HU", "NL", "GB", "US", "TR", "PL"].map((code) => (
-              <option value={code} key={code}>
-                {country(
-                  code as "DE" | "IT" | "HU" | "NL" | "GB" | "US" | "TR" | "PL",
-                )}
-              </option>
-            ))}
-          </select>
-        </div>
-        {loading ? (
-          <div className="result-grid">
-            <div className="skeleton" />
-            <div className="skeleton" />
-          </div>
-        ) : error ? (
-          <div className="error">{common("error")}</div>
-        ) : visible.length === 0 ? (
-          <div className="empty">
-            <h3>{t("noResults")}</h3>
-          </div>
-        ) : (
-          <div className="result-grid">
-            {visible.map((x) => (
-              <article className="card" key={x.id}>
-                <div className="row space-between">
-                  <span className="tag">
-                    {country(
-                      x.country as
-                        "DE" | "IT" | "HU" | "NL" | "GB" | "US" | "TR" | "PL",
-                    )}
-                  </span>
-                  <span className="tag demo">{common("demo")}</span>
-                </div>
-                <h3>{x.name}</h3>
-                <p>{x.city}</p>
-                <div className="divider" />
-                <p>
-                  {x.programs.length} {t("programs")}
-                </p>
-                <div style={{ marginTop: 20 }}>
-                  <Link
-                    href={`/universities/${x.slug}`}
-                    className="button small"
-                  >
-                    {t("viewUniversity")}
-                    <ArrowRight size={16} />
-                  </Link>
-                </div>
-              </article>
-            ))}
-          </div>
-        )}
+        <select className="input" style={{ width: 220 }} value={filter}
+          onChange={(event) => { setFilter(event.target.value); setPage(1); }} aria-label={common("country")}>
+          <option value="">{common("all")}</option>
+          {countries.filter((row) => row.university_count > 0).map((row) =>
+            <option value={row.iso_code} key={row.iso_code}>{row.name}</option>)}
+        </select>
       </div>
-    </div>
+      {loading ? <div className="result-grid"><div className="skeleton" /><div className="skeleton" /></div>
+      : error ? <div className="error">{common("error")}</div>
+      : !data?.items.length ? <div className="empty"><h3>{t("noResults")}</h3></div>
+      : <>
+        <div className="result-grid">{data.items.map((row) =>
+          <article className="card" key={row.id}>
+            <span className="tag">{countryName(row.country, locale)}</span>
+            <h3>{row.name}</h3><p>{row.city}</p>
+            <div className="divider" />
+            <p>{row.program_count ? `${row.program_count} ${t("programs")}` : t("catalogOnly")}</p>
+            <div style={{ marginTop: 20 }}><Link href={`/universities/${row.slug}`} className="button small">
+              {t("viewUniversity")}<ArrowRight size={16} />
+            </Link></div>
+          </article>)}</div>
+        <div className="row" style={{ justifyContent: "center", marginTop: 24 }}>
+          <button type="button" className="button secondary small" disabled={page <= 1}
+            onClick={() => setPage(page - 1)}>{common("back")}</button>
+          <span className="muted small-text">{page} / {data.total_pages}</span>
+          <button type="button" className="button secondary small" disabled={page >= data.total_pages}
+            onClick={() => setPage(page + 1)}>{t("nextPage")}</button>
+        </div>
+      </>}
+    </div></div>
   );
 }

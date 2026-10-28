@@ -5,9 +5,28 @@ export type Requirement = {
   ielts_min: number | null;
   toefl_min: number | null;
   previous_field: string | null;
+  previous_study_notes: string | null;
+  notes: string | null;
   source_url: string | null;
+  source_publisher: string | null;
   verified_at: string | null;
   status: string;
+  exams: {
+    exam_type: string;
+    minimum_score: number | null;
+    score_scale: string | null;
+    minimum_level: string | null;
+    waiver_possible: boolean;
+    source_url: string | null;
+    status: string;
+  }[];
+};
+export type UniversityBrief = {
+  id: number;
+  slug: string;
+  name: string;
+  city: string;
+  country: string;
 };
 export type Program = {
   id: number;
@@ -17,9 +36,18 @@ export type Program = {
   teaching_language: string;
   tuition_eur: number | null;
   duration_months: number | null;
+  credits_ects: number | null;
+  description: string | null;
+  application_deadline: string | null;
   official_url: string | null;
+  source_publisher: string | null;
+  verified_at: string | null;
+  data_status: string;
+  tuition_currency: string | null;
+  tuition_period: string | null;
   is_demo: boolean;
   requirements: Requirement[];
+  university: UniversityBrief | null;
 };
 export type University = {
   id: number;
@@ -29,6 +57,10 @@ export type University = {
   country: string;
   website: string | null;
   description: string | null;
+  ror_id: string | null;
+  institution_type: string | null;
+  source_url: string | null;
+  aliases: { name: string; locale: string | null }[];
   is_demo: boolean;
   programs: Program[];
 };
@@ -40,24 +72,63 @@ export type Scholarship = {
   coverage: string;
   description: string;
   source_url: string | null;
+  provider: string | null;
+  academic_year: string | null;
+  eligible_nationalities: string | null;
+  funding_components: string | null;
+  application_deadline: string | null;
+  verified_at: string | null;
+  verification_status: string;
   is_demo: boolean;
+};
+export type Country = {
+  iso_code: string;
+  name: string;
+  region: string;
+  university_count: number;
+  program_count: number;
+  verified_program_count: number;
+};
+export type AcademicField = {
+  id: number;
+  slug: string;
+  name: string;
+  category: string;
+  isced_code: string | null;
+};
+export type UniversitySummary = UniversityBrief & {
+  website: string | null;
+  ror_id: string | null;
+  program_count: number;
+};
+export type UniversityPage = {
+  items: UniversitySummary[];
+  total: number;
+  page: number;
+  page_size: number;
+  total_pages: number;
 };
 export type Profile = {
   degree: "bachelor" | "master" | "phd";
   academic_status?: string;
   field: string;
+  custom_field?: string;
   previous_field?: string;
   research_interests?: string;
   gpa?: number;
   gpa_scale?: number;
   ielts?: number;
   toefl?: number;
+  hsk_level?: number;
+  hsk_score?: number;
+  english_cefr?: string;
   sat?: number;
   gre?: number;
   gmat?: number;
   countries: string[];
   university_id?: number;
   budget_eur?: number;
+  budget_period?: string;
   scholarship_priority: string;
   teaching_language?: string;
   intake_year?: number;
@@ -73,10 +144,14 @@ export type Match = {
   uncertainty: string[];
   notes: string[];
   checks: Record<string, string>;
+  subject_match: string;
+  requirement_confidence: string;
 };
 export type MatchResponse = {
   results: Match[];
   total: number;
+  page: number;
+  page_size: number;
   no_match_reason: string | null;
   disclaimer: string;
 };

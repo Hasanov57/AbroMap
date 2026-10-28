@@ -17,9 +17,8 @@ export function Collection({ mode }: { mode: "saved" | "compare" }) {
       chosen = JSON.parse(localStorage.getItem(key) || "[]");
     } catch {}
     setIds(chosen);
-    api
-      .programs()
-      .then((rows) => setPrograms(rows.filter((p) => chosen.includes(p.id))))
+    Promise.all(chosen.map((id) => api.program(id).catch(() => null)))
+      .then((rows) => setPrograms(rows.filter((row): row is Program => row !== null)))
       .finally(() => setLoading(false));
   }, [key]);
   function remove(id: number) {
@@ -47,7 +46,7 @@ export function Collection({ mode }: { mode: "saved" | "compare" }) {
           <div className="result-grid">
             {programs.map((p) => (
               <article className="card" key={p.id}>
-                <span className="tag demo">{common("demo")}</span>
+                <span className="tag">{p.source_publisher || common("source")}</span>
                 <h3>{p.name}</h3>
                 <div className="detail-list">
                   <div>

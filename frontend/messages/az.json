@@ -46,20 +46,20 @@
     "feature5Text": "Tələblərin ilini, yoxlanma vəziyyətini və mənbəsini gör.",
     "countriesEyebrow": "İstiqamət seç",
     "countriesTitle": "Ölkələri kəşf et",
-    "countriesText": "Hazırkı demo kataloqumuzdan başla. Proqram sayı bazadakı qeydlərə əsaslanır.",
+    "countriesText": "Ölkələrə təsdiqlənmiş proqram sayına görə baxın. Kataloqdakı bir çox universitetin proqramları hələ yoxlanılmayıb.",
     "programs": "proqram",
-    "noPrograms": "Hələ proqram yoxdur",
+    "noPrograms": "Təsdiqlənmiş proqram hələ yoxdur",
     "ctaTitle": "Gələcəyinə doğru ilk addımı at.",
     "ctaText": "Profilini tamamla və uyğun proqramları kəşf et.",
     "ctaButton": "Universitetimi tap"
   },
   "common": {
-    "demo": "Demo məlumat — real qəbul qərarı üçün istifadə etməyin.",
     "unknown": "Məlum deyil",
     "historical": "Tarixi məlumat",
     "unverified": "Yoxlanmayıb",
     "verifiedCurrent": "Cari məlumat təsdiqlənib",
     "verifiedHistorical": "Tarixi məlumat təsdiqlənib",
+    "yearNotStated": "Qəbul ili mənbədə göstərilmir",
     "needsReview": "Yoxlama tələb olunur",
     "outdated": "Köhnəlmiş məlumat",
     "verifiedAt": "Son yoxlama: {date}",
@@ -73,7 +73,7 @@
     "save": "Yadda saxla",
     "view": "Bax",
     "year": "Tədris ili",
-    "tuition": "İllik təhsil haqqı",
+    "tuition": "Təhsil haqqı",
     "country": "Ölkə",
     "degree": "Təhsil səviyyəsi",
     "field": "İxtisas",
@@ -175,8 +175,21 @@
     "yourCountries": "Ölkələr",
     "yourBudget": "Büdcə",
     "yourTests": "İmtahanlar",
-    "catalogCount": "Bu seçimlər üzrə demo kataloqda {count} proqram var.",
-    "catalogNone": "Bu seçimlər üzrə demo kataloqda hələ proqram yoxdur. Digər seçimləri yoxlaya bilərsiniz."
+    "catalogCount": "Bu seçimlər üzrə {count} təsdiqlənmiş proqram var.",
+    "catalogNone": "Bu seçimlər üzrə hələ təsdiqlənmiş proqram yoxdur. Universitet kataloquna baxa bilərsiniz.",
+    "searchMajor": "İxtisas axtar",
+    "noMajors": "İxtisas tapılmadı",
+    "cannotFindMajor": "İxtisasımı tapa bilmirəm",
+    "customMajor": "İxtisasınızı diplomda yazıldığı kimi daxil edin",
+    "chooseFromCatalog": "Kataloqdan seç",
+    "hskLevel": "HSK səviyyəsi",
+    "hskScore": "HSK balı",
+    "englishCefr": "İngilis dili CEFR səviyyəsi",
+    "searchCountry": "Ölkə axtar",
+    "countryAvailability": "{universities} universitet · {programs} təsdiqlənmiş proqram",
+    "searchUniversity": "Universitet axtar",
+    "noUniversities": "Universitet tapılmadı",
+    "catalogAvailabilityNote": "Uyğunluq nəticələrində yalnız rəsmi mənbə ilə təsdiqlənmiş proqramlar göstərilir. Universitetin proqramları hələ yoxlanılmasa da kataloqda görünə bilər."
   },
   "results": {
     "title": "Sənə uyğun proqramlar",
@@ -184,12 +197,12 @@
     "edit": "Profilə qayıt",
     "filters": "Nəticələri süzgəcdən keçir",
     "empty": "Seçimlərinizə uyğun proqram tapılmadı.",
-    "emptyHelp": "Ölkə və ixtisas seçimlərini dəyişib yenidən yoxlayın.",
+    "emptyHelp": "Təsdiqlənmiş proqram məlumatları hələ məhduddur. Universitet kataloquna baxın və ya ölkə və ixtisas seçimini dəyişin.",
     "catalog_empty": "Kataloqda hələ proqram yoxdur.",
-    "degree_unavailable": "Seçdiyiniz təhsil səviyyəsi üzrə demo proqram hələ yoxdur.",
-    "field_unavailable": "Bu təhsil səviyyəsi və ixtisas üzrə demo proqram hələ yoxdur.",
-    "country_unavailable": "Seçdiyiniz ölkələrdə bu ixtisas üzrə demo proqram hələ yoxdur.",
-    "university_unavailable": "Seçdiyiniz universitetdə bu səviyyə və ixtisas üzrə demo proqram yoxdur.",
+    "degree_unavailable": "Bu təhsil pilləsi üzrə mənbə ilə təsdiqlənmiş proqram hələ yoxdur.",
+    "field_unavailable": "Bu pillə və ixtisas üzrə təsdiqlənmiş proqram hələ yoxdur.",
+    "country_unavailable": "Seçdiyiniz ölkələrdə bu sahə üzrə təsdiqlənmiş proqram hələ yoxdur.",
+    "university_unavailable": "Seçilmiş universitetdə bu sahə və pillə üzrə təsdiqlənmiş proqram hələ yoxdur.",
     "filters_empty": "Bu süzgəclərlə nəticə görünmür. Süzgəcləri sıfırlayın.",
     "clearFilters": "Süzgəcləri sıfırla",
     "browse": "Mövcud proqramlara bax",
@@ -203,7 +216,17 @@
     "details": "Proqrama bax",
     "saved": "Yadda saxla",
     "compare": "Müqayisəyə əlavə et",
-    "showing": "{count} proqram göstərilir"
+    "showing": "{count} proqram göstərilir",
+    "custom_field_unmapped": "Yazdığınız ixtisas saxlanıldı, lakin hələ kataloqla əlaqələndirilməyib. Əlaqəli sahəni seçin və ya universitetlərə baxın.",
+    "insufficient_data": "Bu seçim üçün kifayət qədər təsdiqlənmiş proqram məlumatı yoxdur.",
+    "exactSubject": "Eyni ixtisas",
+    "relatedSubject": "Əlaqəli ixtisas",
+    "requirementConfidence": "Tələb məlumatının vəziyyəti",
+    "confidence_verified": "Seçilmiş qəbul ili üçün təsdiqlənib",
+    "confidence_historical": "Əvvəlki ilin məlumatı",
+    "confidence_unverified": "Yoxlanmayıb",
+    "confidence_missing": "Tələb məlumatı yoxdur",
+    "loadMore": "Daha çox nəticə"
   },
   "matchNotes": {
     "requirements_unverified": "Qəbul tələbləri təsdiqlənməyib və ya mövcud deyil.",
@@ -214,7 +237,12 @@
     "language_requirement_missing": "Dil tələbi mövcud deyil.",
     "language_score_missing": "Dil imtahanı nəticəsi göstərilməyib; istisna mümkün ola bilər.",
     "finance_missing": "Təhsil haqqı və ya büdcə məlum deyil; yaşayış xərcləri daxil deyil.",
-    "scholarship_required_unverified": "Tam təqaüd tələbiniz üçün maliyyələşmə təsdiqlənməyib."
+    "scholarship_required_unverified": "Tam təqaüd tələbiniz üçün maliyyələşmə təsdiqlənməyib.",
+    "program_specific_prerequisites": "Proqrama məxsus əvvəlki təhsil şərtləri fərdi yoxlanmalıdır.",
+    "subject_prerequisites_unverified": "Əlaqəli ixtisas qəbul şərtlərinin ödənildiyini sübut etmir.",
+    "hsk_not_demonstrated": "HSK tələbi hələ təsdiqlənməyib.",
+    "english_cefr_not_demonstrated": "İngilis dili CEFR səviyyəsi hələ təsdiqlənməyib.",
+    "finance_not_comparable": "Mövcud məlumatla təhsil haqqını illik büdcə ilə müqayisə etmək mümkün deyil."
   },
   "directory": {
     "title": "Universitetləri kəşf et",
@@ -222,7 +250,9 @@
     "searchPlaceholder": "Universitet adı ilə axtar",
     "programs": "Proqramlar",
     "viewUniversity": "Universitetə bax",
-    "noResults": "Universitet tapılmadı."
+    "noResults": "Universitet tapılmadı.",
+    "catalogOnly": "Proqram məlumatları hələ yoxlanılır.",
+    "nextPage": "Növbəti səhifə"
   },
   "detail": {
     "about": "Haqqında",
@@ -242,7 +272,11 @@
     "askAI": "AI köməkçidən soruş",
     "aiQuestion": "Sualınızı yazın",
     "send": "Göndər",
-    "aiFallback": "AI xidməti qoşulmayıb; məlumatları rəsmi mənbədə yoxlayın."
+    "aiFallback": "AI xidməti qoşulmayıb; məlumatları rəsmi mənbədə yoxlayın.",
+    "institutionCatalogInfo": "Universitet məlumatı ROR mənbəsindən mövcuddur. Təhsil proqramları ayrıca yoxlanılır.",
+    "catalogOnly": "Bu universitet kataloqdadır; təhsil proqramları hələ təsdiqlənməyib.",
+    "institutionSource": "Universitet mənbəsi",
+    "waiverPossible": "istisna tətbiq oluna bilər"
   },
   "scholarships": {
     "title": "Təqaüd imkanları",
@@ -252,7 +286,10 @@
     "partial": "Qismən",
     "details": "Ətraflı bax",
     "empty": "Hazırda təqaüd qeydi yoxdur.",
-    "warning": "Təqaüdün mövcudluğu maliyyələşmə zəmanəti deyil."
+    "warning": "Təqaüdün mövcudluğu maliyyələşmə zəmanəti deyil.",
+    "competitiveFull": "Rəqabətli tam təqaüd imkanı",
+    "verifiedSource": "Rəsmi mənbə yoxlanılıb",
+    "eligibilityUnconfirmed": "Fərdi uyğunluğunuz hələ təsdiqlənməyib."
   },
   "roadmap": {
     "title": "Müraciət yol xəritəsi",
@@ -289,13 +326,13 @@
     "privacy": "Məxfilik siyasəti",
     "terms": "İstifadə şərtləri",
     "notice": "Məlumat qeydi",
-    "disclaimer": "Demo məlumatlar qəbul və ya təqaüd qərarı üçün əsas deyil. Rəsmi mənbələri yoxlayın."
+    "disclaimer": "Proqram əhatəsi məhduddur və məlumatlar dəyişə bilər. Müraciətdən əvvəl rəsmi mənbələri yoxlayın."
   },
   "legal": {
     "privacyTitle": "Məxfilik siyasəti",
     "termsTitle": "İstifadə şərtləri",
     "review": "Bu mətn ictimai istifadədən əvvəl hüquqi baxış tələb edir.",
-    "privacy": "Profil məlumatları bu demo versiyada brauzerinizdə saxlanılır və uyğunluq hesablanması üçün API-yə göndərilir. Brauzer yaddaşını təmizləməklə məlumatları silə bilərsiniz.",
+    "privacy": "Profil məlumatları brauzerinizdə saxlanılır və uyğunluq hesablanması üçün API-yə göndərilir. Brauzer yaddaşını təmizləməklə məlumatları silə bilərsiniz.",
     "terms": "Uyğunluq balı qəbul ehtimalı deyil. Proqram və təqaüd məlumatlarını rəsmi təşkilatla təsdiqləyin."
   }
 }

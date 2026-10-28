@@ -1,14 +1,13 @@
 "use client";
 import { useEffect, useState } from "react";
 import { ArrowRight, ExternalLink, MapPin } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { api } from "@/lib/api";
+import { countryName } from "@/lib/countries";
 import type { University } from "@/lib/types";
 export function UniversityDetail({ slug }: { slug: string }) {
-  const t = useTranslations("detail"),
-    common = useTranslations("common"),
-    country = useTranslations("countryNames");
+  const locale = useLocale(), t = useTranslations("detail"), common = useTranslations("common");
   const [item, setItem] = useState<University | null>(null),
     [loading, setLoading] = useState(true),
     [error, setError] = useState(false);
@@ -31,31 +30,25 @@ export function UniversityDetail({ slug }: { slug: string }) {
             <div className="page-heading">
               <div className="row">
                 <span className="tag">
-                  {country(
-                    item.country as
-                      "DE" | "IT" | "HU" | "NL" | "GB" | "US" | "TR" | "PL",
-                  )}
+                  {countryName(item.country, locale)}
                 </span>
-                <span className="tag demo">{common("demo")}</span>
               </div>
               <h1>{item.name}</h1>
               <p className="row">
                 <MapPin size={17} />
                 {item.city},{" "}
-                {country(
-                  item.country as
-                    "DE" | "IT" | "HU" | "NL" | "GB" | "US" | "TR" | "PL",
-                )}
+                {countryName(item.country, locale)}
               </p>
             </div>
             <div className="detail-grid">
               <div>
                 <section className="card">
                   <h3>{t("about")}</h3>
-                  <p>{item.is_demo ? common("demo") : item.description}</p>
+                  <p>{item.description || t("institutionCatalogInfo")}</p>
                 </section>
                 <section className="card">
                   <h3>{t("programs")}</h3>
+                  {item.programs.length === 0 && <p className="note">{t("catalogOnly")}</p>}
                   <div className="grid">
                     {item.programs.map((p) => (
                       <Link
@@ -94,7 +87,9 @@ export function UniversityDetail({ slug }: { slug: string }) {
                   <p>{common("noSource")}</p>
                 )}
                 <div className="divider" />
-                <p className="small-text muted">{common("demo")}</p>
+                {item.ror_id && <p className="small-text muted">
+                  {t("institutionSource")}: <a href={item.ror_id} target="_blank" rel="noopener noreferrer">ROR</a>
+                </p>}
               </aside>
             </div>
           </>

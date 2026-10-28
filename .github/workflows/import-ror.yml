@@ -1,0 +1,32 @@
+name: Import verified ROR university catalog
+
+on:
+  workflow_dispatch:
+
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    env:
+      DATABASE_URL: ${{ secrets.SUPABASE_DATABASE_URL }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version-file: backend/.python-version
+      - name: Check database secret
+        run: |
+          if [ -z "$DATABASE_URL" ]; then
+            echo "Set the SUPABASE_DATABASE_URL repository secret before running this workflow."
+            exit 1
+          fi
+      - name: Install backend dependencies
+        working-directory: backend
+        run: python -m pip install -r requirements.txt
+      - name: Apply migrations and import official data
+        working-directory: backend
+        run: |
+          python -m alembic upgrade head
+          python -m scripts.import_fields
+          python -m scripts.import_universities --dump data/ror_europe_china.zip --execute --source-version v2.15 --batch-size 250
+          python -m scripts.import_official_sample --execute

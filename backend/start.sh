@@ -5,5 +5,7 @@ set -euo pipefail
 : "${FRONTEND_ORIGIN:?Set FRONTEND_ORIGIN to your Vercel site URL}"
 
 python -m alembic upgrade head
-python -m scripts.seed
+python -m scripts.import_fields
+python -m scripts.import_universities --dump data/ror_official_sample.json --execute --source-version v2.15
+python -m scripts.import_official_sample --execute
 exec python -m uvicorn app.main:app --host 0.0.0.0 --port "${PORT:-8000}"

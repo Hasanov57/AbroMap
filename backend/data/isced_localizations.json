@@ -1,0 +1,164 @@
+{
+  "translations": {
+    "00": {
+      "az": "Ümumi proqramlar və kvalifikasiyalar",
+      "ru": "Общие программы и квалификации"
+    },
+    "01": {
+      "az": "Təhsil",
+      "ru": "Образование"
+    },
+    "02": {
+      "az": "İncəsənət və humanitar elmlər",
+      "ru": "Искусство и гуманитарные науки"
+    },
+    "03": {
+      "az": "Sosial elmlər, jurnalistika və informasiya",
+      "ru": "Социальные науки, журналистика и информация"
+    },
+    "04": {
+      "az": "Biznes, idarəetmə və hüquq",
+      "ru": "Бизнес, управление и право"
+    },
+    "05": {
+      "az": "Təbiət elmləri, riyaziyyat və statistika",
+      "ru": "Естественные науки, математика и статистика"
+    },
+    "06": {
+      "az": "İnformasiya və kommunikasiya texnologiyaları",
+      "ru": "Информационно-коммуникационные технологии"
+    },
+    "07": {
+      "az": "Mühəndislik, istehsalat və tikinti",
+      "ru": "Инженерия, производство и строительство"
+    },
+    "08": {
+      "az": "Kənd təsərrüfatı, meşəçilik, balıqçılıq və baytarlıq",
+      "ru": "Сельское хозяйство, лесное и рыбное хозяйство, ветеринария"
+    },
+    "09": {
+      "az": "Səhiyyə və sosial rifah",
+      "ru": "Здравоохранение и социальное обеспечение"
+    },
+    "10": {
+      "az": "Xidmətlər",
+      "ru": "Услуги"
+    },
+    "001": {
+      "az": "Əsas proqramlar və kvalifikasiyalar",
+      "ru": "Базовые программы и квалификации"
+    },
+    "002": {
+      "az": "Savadlılıq və riyazi bacarıqlar",
+      "ru": "Грамотность и счёт"
+    },
+    "003": {
+      "az": "Şəxsi bacarıqlar və inkişaf",
+      "ru": "Личные навыки и развитие"
+    },
+    "011": {
+      "az": "Təhsil",
+      "ru": "Образование"
+    },
+    "021": {
+      "az": "İncəsənət",
+      "ru": "Искусство"
+    },
+    "022": {
+      "az": "Humanitar elmlər",
+      "ru": "Гуманитарные науки"
+    },
+    "023": {
+      "az": "Dillər",
+      "ru": "Языки"
+    },
+    "031": {
+      "az": "Sosial və davranış elmləri",
+      "ru": "Социальные и поведенческие науки"
+    },
+    "032": {
+      "az": "Jurnalistika və informasiya",
+      "ru": "Журналистика и информация"
+    },
+    "041": {
+      "az": "Biznes və idarəetmə",
+      "ru": "Бизнес и управление"
+    },
+    "042": {
+      "az": "Hüquq",
+      "ru": "Право"
+    },
+    "051": {
+      "az": "Biologiya və əlaqəli elmlər",
+      "ru": "Биология и смежные науки"
+    },
+    "052": {
+      "az": "Ətraf mühit",
+      "ru": "Окружающая среда"
+    },
+    "053": {
+      "az": "Fiziki elmlər",
+      "ru": "Физические науки"
+    },
+    "054": {
+      "az": "Riyaziyyat və statistika",
+      "ru": "Математика и статистика"
+    },
+    "061": {
+      "az": "İnformasiya və kommunikasiya texnologiyaları",
+      "ru": "Информационно-коммуникационные технологии"
+    },
+    "071": {
+      "az": "Mühəndislik",
+      "ru": "Инженерия"
+    },
+    "072": {
+      "az": "İstehsalat və emal",
+      "ru": "Производство и переработка"
+    },
+    "073": {
+      "az": "Memarlıq və tikinti",
+      "ru": "Архитектура и строительство"
+    },
+    "081": {
+      "az": "Kənd təsərrüfatı",
+      "ru": "Сельское хозяйство"
+    },
+    "082": {
+      "az": "Meşəçilik",
+      "ru": "Лесное хозяйство"
+    },
+    "083": {
+      "az": "Balıqçılıq",
+      "ru": "Рыбное хозяйство"
+    },
+    "084": {
+      "az": "Baytarlıq",
+      "ru": "Ветеринария"
+    },
+    "091": {
+      "az": "Səhiyyə",
+      "ru": "Здравоохранение"
+    },
+    "092": {
+      "az": "Sosial rifah",
+      "ru": "Социальное обеспечение"
+    },
+    "101": {
+      "az": "Fərdi xidmətlər",
+      "ru": "Персональные услуги"
+    },
+    "102": {
+      "az": "Gigiyena və əməyin mühafizəsi",
+      "ru": "Гигиена и охрана труда"
+    },
+    "103": {
+      "az": "Təhlükəsizlik xidmətləri",
+      "ru": "Службы безопасности"
+    },
+    "104": {
+      "az": "Nəqliyyat xidmətləri",
+      "ru": "Транспортные услуги"
+    }
+  }
+}

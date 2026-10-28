@@ -7,19 +7,21 @@ import {
   GitCompareArrows,
   SlidersHorizontal,
 } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { api } from "@/lib/api";
+import { countryName } from "@/lib/countries";
 import type { Match, Profile } from "@/lib/types";
 export function Results() {
-  const t = useTranslations("results"),
+  const locale = useLocale(), t = useTranslations("results"),
     common = useTranslations("common"),
-    countries = useTranslations("countryNames"),
     notes = useTranslations("matchNotes");
   const [rows, setRows] = useState<Match[]>([]),
     [loading, setLoading] = useState(true),
     [error, setError] = useState(false),
     [noMatchReason, setNoMatchReason] = useState<string | null>(null),
+    [page, setPage] = useState(1),
+    [total, setTotal] = useState(0),
     [filter, setFilter] = useState(""),
     [category, setCategory] = useState(""),
     [saved, setSaved] = useState<number[]>([]),
@@ -36,10 +38,11 @@ export function Results() {
         return;
       }
       api
-        .match(p)
+        .match(p, page)
         .then((data) => {
-          setRows(data.results);
+          setRows((previous) => page === 1 ? data.results : [...previous, ...data.results]);
           setNoMatchReason(data.no_match_reason);
+          setTotal(data.total);
         })
         .catch(() => setError(true))
         .finally(() => setLoading(false));
@@ -47,7 +50,7 @@ export function Results() {
       setLoading(false);
       setError(true);
     }
-  }, []);
+  }, [page]);
   const visible = useMemo(
     () =>
       rows.filter(
@@ -109,10 +112,7 @@ export function Results() {
                 {[...new Set(rows.map((x) => x.university.country))].map(
                   (x) => (
                     <option value={x} key={x}>
-                      {countries(
-                        x as
-                          "DE" | "IT" | "HU" | "NL" | "GB" | "US" | "TR" | "PL",
-                      )}
+                      {countryName(x, locale)}
                     </option>
                   ),
                 )}
@@ -183,23 +183,13 @@ export function Results() {
                       >
                         {t(x.category)}
                       </span>
-                      <span className="tag demo">{common("demo")}</span>
+                      <span className="tag">{t(x.subject_match === "exact" ? "exactSubject" : "relatedSubject")}</span>
                     </div>
                     <div>
                       <h3>{x.program.name}</h3>
                       <p>
                         {x.university.name} · {x.university.city},{" "}
-                        {countries(
-                          x.university.country as
-                            | "DE"
-                            | "IT"
-                            | "HU"
-                            | "NL"
-                            | "GB"
-                            | "US"
-                            | "TR"
-                            | "PL",
-                        )}
+                        {countryName(x.university.country, locale)}
                       </p>
                     </div>
                     <div className="row space-between">
@@ -209,18 +199,15 @@ export function Results() {
                       <span className="muted small-text">
                         {x.program.tuition_eur === null
                           ? common("unknown")
-                          : `€${x.program.tuition_eur.toLocaleString()}`}
+                          : `${x.program.tuition_currency || "EUR"} ${x.program.tuition_eur.toLocaleString()}${x.program.tuition_period ? ` / ${x.program.tuition_period}` : ""}`}
                       </span>
                     </div>
                     {x.uncertainty.length > 0 && (
                       <div className="note">
                         <strong>{t("uncertainty")}</strong>
                         <div>
-                          {x.uncertainty
-                            .map((code) =>
-                              notes(code as "requirements_unverified"),
-                            )
-                            .join(" ")}
+                          {x.uncertainty.map((code) => notes.has(code)
+                            ? notes(code as "requirements_unverified") : code.replaceAll("_", " ")).join(" ")}
                         </div>
                       </div>
                     )}
@@ -262,10 +249,14 @@ export function Results() {
                         {t("compare")}
                       </button>
                     </div>
+                    <p className="small-text muted">{t("requirementConfidence")}: {t(`confidence_${x.requirement_confidence}` as "confidence_verified")}</p>
                   </article>
                 ))}
               </div>
             )}
+            {rows.length < total && <div className="row" style={{ justifyContent: "center", marginTop: 24 }}>
+              <button type="button" className="button secondary" onClick={() => setPage(page + 1)}>{t("loadMore")}</button>
+            </div>}
           </>
         )}
       </div>

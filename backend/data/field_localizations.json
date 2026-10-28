@@ -1,0 +1,345 @@
+{
+  "translations": {
+    "computer-science": {
+      "az": "Kompüter elmləri",
+      "ru": "Компьютерные науки",
+      "aliases": [
+        "CS"
+      ]
+    },
+    "information-technology": {
+      "az": "İnformasiya texnologiyaları",
+      "ru": "Информационные технологии",
+      "aliases": [
+        "IT",
+        "Information Technologies",
+        "Information Tech"
+      ]
+    },
+    "artificial-intelligence": {
+      "az": "Süni intellekt",
+      "ru": "Искусственный интеллект",
+      "aliases": [
+        "AI",
+        "Machine Intelligence"
+      ]
+    },
+    "machine-learning": {
+      "az": "Maşın öyrənməsi",
+      "ru": "Машинное обучение",
+      "aliases": [
+        "ML"
+      ]
+    },
+    "information-systems": {
+      "az": "İnformasiya sistemləri",
+      "ru": "Информационные системы",
+      "aliases": [
+        "IS"
+      ]
+    },
+    "information-science": {
+      "az": "İnformasiya elmi",
+      "ru": "Информационная наука",
+      "aliases": []
+    },
+    "software-engineering": {
+      "az": "Proqram mühəndisliyi",
+      "ru": "Программная инженерия",
+      "aliases": [
+        "SE",
+        "Программирование"
+      ]
+    },
+    "cybersecurity": {
+      "az": "Kibertəhlükəsizlik",
+      "ru": "Кибербезопасность",
+      "aliases": [
+        "Cyber Security"
+      ]
+    },
+    "computer-engineering": {
+      "az": "Kompüter mühəndisliyi",
+      "ru": "Компьютерная инженерия",
+      "aliases": []
+    },
+    "data-science": {
+      "az": "Data elmi",
+      "ru": "Наука о данных",
+      "aliases": [
+        "Data Science"
+      ]
+    },
+    "business-analytics": {
+      "az": "Biznes analitikası",
+      "ru": "Бизнес-аналитика",
+      "aliases": []
+    },
+    "data-analytics": {
+      "az": "Data analitikası",
+      "ru": "Аналитика данных",
+      "aliases": []
+    },
+    "data-engineering": {
+      "az": "Data mühəndisliyi",
+      "ru": "Инженерия данных",
+      "aliases": []
+    },
+    "cloud-computing": {
+      "az": "Bulud texnologiyaları",
+      "ru": "Облачные вычисления",
+      "aliases": []
+    },
+    "robotics-engineering": {
+      "az": "Robototexnika mühəndisliyi",
+      "ru": "Робототехника",
+      "aliases": [
+        "Robotics"
+      ]
+    },
+    "mathematics": {
+      "az": "Riyaziyyat",
+      "ru": "Математика",
+      "aliases": []
+    },
+    "applied-mathematics": {
+      "az": "Tətbiqi riyaziyyat",
+      "ru": "Прикладная математика",
+      "aliases": []
+    },
+    "statistics": {
+      "az": "Statistika",
+      "ru": "Статистика",
+      "aliases": []
+    },
+    "physics": {
+      "az": "Fizika",
+      "ru": "Физика",
+      "aliases": []
+    },
+    "chemistry": {
+      "az": "Kimya",
+      "ru": "Химия",
+      "aliases": []
+    },
+    "biology": {
+      "az": "Biologiya",
+      "ru": "Биология",
+      "aliases": []
+    },
+    "biotechnology": {
+      "az": "Biotexnologiya",
+      "ru": "Биотехнология",
+      "aliases": []
+    },
+    "bioinformatics": {
+      "az": "Bioinformatika",
+      "ru": "Биоинформатика",
+      "aliases": []
+    },
+    "environmental-science": {
+      "az": "Ətraf mühit elmləri",
+      "ru": "Науки об окружающей среде",
+      "aliases": []
+    },
+    "medicine": {
+      "az": "Tibb",
+      "ru": "Медицина",
+      "aliases": []
+    },
+    "dentistry": {
+      "az": "Stomatologiya",
+      "ru": "Стоматология",
+      "aliases": []
+    },
+    "pharmacy": {
+      "az": "Əczaçılıq",
+      "ru": "Фармация",
+      "aliases": []
+    },
+    "nursing": {
+      "az": "Tibb bacılığı",
+      "ru": "Сестринское дело",
+      "aliases": []
+    },
+    "psychology": {
+      "az": "Psixologiya",
+      "ru": "Психология",
+      "aliases": []
+    },
+    "economics": {
+      "az": "İqtisadiyyat",
+      "ru": "Экономика",
+      "aliases": []
+    },
+    "finance": {
+      "az": "Maliyyə",
+      "ru": "Финансы",
+      "aliases": []
+    },
+    "accounting": {
+      "az": "Mühasibat uçotu",
+      "ru": "Бухгалтерский учёт",
+      "aliases": []
+    },
+    "business-administration": {
+      "az": "Biznesin idarə edilməsi",
+      "ru": "Деловое администрирование",
+      "aliases": [
+        "Business Management"
+      ]
+    },
+    "marketing": {
+      "az": "Marketinq",
+      "ru": "Маркетинг",
+      "aliases": []
+    },
+    "international-business": {
+      "az": "Beynəlxalq biznes",
+      "ru": "Международный бизнес",
+      "aliases": []
+    },
+    "management": {
+      "az": "İdarəetmə",
+      "ru": "Менеджмент",
+      "aliases": []
+    },
+    "political-science": {
+      "az": "Siyasi elmlər",
+      "ru": "Политология",
+      "aliases": []
+    },
+    "international-relations": {
+      "az": "Beynəlxalq münasibətlər",
+      "ru": "Международные отношения",
+      "aliases": []
+    },
+    "law": {
+      "az": "Hüquq",
+      "ru": "Право",
+      "aliases": []
+    },
+    "architecture": {
+      "az": "Memarlıq",
+      "ru": "Архитектура",
+      "aliases": []
+    },
+    "urban-planning": {
+      "az": "Şəhərsalma",
+      "ru": "Градостроительство",
+      "aliases": []
+    },
+    "education-studies": {
+      "az": "Təhsil elmləri",
+      "ru": "Науки об образовании",
+      "aliases": [
+        "Education"
+      ]
+    },
+    "linguistics": {
+      "az": "Dilçilik",
+      "ru": "Лингвистика",
+      "aliases": []
+    },
+    "journalism": {
+      "az": "Jurnalistika",
+      "ru": "Журналистика",
+      "aliases": []
+    },
+    "media-studies": {
+      "az": "Media tədqiqatları",
+      "ru": "Медиаисследования",
+      "aliases": []
+    },
+    "graphic-design": {
+      "az": "Qrafik dizayn",
+      "ru": "Графический дизайн",
+      "aliases": []
+    },
+    "agriculture": {
+      "az": "Kənd təsərrüfatı",
+      "ru": "Сельское хозяйство",
+      "aliases": []
+    },
+    "veterinary-medicine": {
+      "az": "Baytarlıq təbabəti",
+      "ru": "Ветеринарная медицина",
+      "aliases": []
+    },
+    "tourism": {
+      "az": "Turizm",
+      "ru": "Туризм",
+      "aliases": []
+    },
+    "hospitality-management": {
+      "az": "Qonaqpərvərlik idarəetməsi",
+      "ru": "Гостиничный менеджмент",
+      "aliases": []
+    },
+    "electrical-engineering": {
+      "az": "Elektrik mühəndisliyi",
+      "ru": "Электротехника",
+      "aliases": []
+    },
+    "mechanical-engineering": {
+      "az": "Mexanika mühəndisliyi",
+      "ru": "Машиностроение",
+      "aliases": []
+    },
+    "civil-engineering": {
+      "az": "İnşaat mühəndisliyi",
+      "ru": "Гражданское строительство",
+      "aliases": []
+    },
+    "chemical-engineering": {
+      "az": "Kimya mühəndisliyi",
+      "ru": "Химическая инженерия",
+      "aliases": []
+    },
+    "aerospace-engineering": {
+      "az": "Aerokosmik mühəndislik",
+      "ru": "Аэрокосмическая инженерия",
+      "aliases": []
+    },
+    "biomedical-science": {
+      "az": "Biotibb elmləri",
+      "ru": "Биомедицинские науки",
+      "aliases": []
+    },
+    "biochemistry": {
+      "az": "Biokimya",
+      "ru": "Биохимия",
+      "aliases": []
+    },
+    "art-history": {
+      "az": "İncəsənət tarixi",
+      "ru": "История искусства",
+      "aliases": []
+    },
+    "fine-art": {
+      "az": "Təsviri incəsənət",
+      "ru": "Изобразительное искусство",
+      "aliases": []
+    },
+    "film-studies": {
+      "az": "Kino tədqiqatları",
+      "ru": "Киноведение",
+      "aliases": []
+    },
+    "music": {
+      "az": "Musiqi",
+      "ru": "Музыка",
+      "aliases": []
+    },
+    "public-health": {
+      "az": "İctimai səhiyyə",
+      "ru": "Общественное здравоохранение",
+      "aliases": []
+    },
+    "social-work": {
+      "az": "Sosial iş",
+      "ru": "Социальная работа",
+      "aliases": []
+    }
+  }
+}

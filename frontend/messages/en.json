@@ -46,20 +46,20 @@
     "feature5Text": "See the year, verification status and source of requirements.",
     "countriesEyebrow": "Choose a direction",
     "countriesTitle": "Explore countries",
-    "countriesText": "Start with our current demo catalog. Program counts come from database records.",
+    "countriesText": "Browse countries by verified program count. Many cataloged universities do not yet have reviewed programs.",
     "programs": "programs",
-    "noPrograms": "No programs yet",
+    "noPrograms": "No verified programs yet",
     "ctaTitle": "Take the first step toward your future.",
     "ctaText": "Complete your profile and discover suitable programs.",
     "ctaButton": "Find my university"
   },
   "common": {
-    "demo": "Demo data — do not use for real admission decisions.",
     "unknown": "Unknown",
     "historical": "Historical data",
     "unverified": "Unverified",
     "verifiedCurrent": "Verified current",
     "verifiedHistorical": "Verified historical",
+    "yearNotStated": "Admission year not stated by source",
     "needsReview": "Needs review",
     "outdated": "Outdated",
     "verifiedAt": "Last checked: {date}",
@@ -73,7 +73,7 @@
     "save": "Save",
     "view": "View",
     "year": "Academic year",
-    "tuition": "Annual tuition",
+    "tuition": "Tuition",
     "country": "Country",
     "degree": "Degree",
     "field": "Field",
@@ -175,8 +175,21 @@
     "yourCountries": "Countries",
     "yourBudget": "Budget",
     "yourTests": "Tests",
-    "catalogCount": "There are {count} demo programs for these choices.",
-    "catalogNone": "There is no demo program for these choices yet. You can try other options."
+    "catalogCount": "There are {count} verified programs for these choices.",
+    "catalogNone": "There are no verified programs for these choices yet. You can browse the university directory.",
+    "searchMajor": "Search academic fields",
+    "noMajors": "No fields found",
+    "cannotFindMajor": "I cannot find my major",
+    "customMajor": "Enter your major as written on your degree",
+    "chooseFromCatalog": "Choose from catalog",
+    "hskLevel": "HSK level",
+    "hskScore": "HSK score",
+    "englishCefr": "English CEFR level",
+    "searchCountry": "Search countries",
+    "countryAvailability": "{universities} universities · {programs} verified programs",
+    "searchUniversity": "Search universities",
+    "noUniversities": "No universities found",
+    "catalogAvailabilityNote": "Only source-backed degree programs appear in matching. A university can be listed even when its programs are still being checked."
   },
   "results": {
     "title": "Programs for you",
@@ -184,12 +197,12 @@
     "edit": "Edit profile",
     "filters": "Filter results",
     "empty": "No programs match your choices.",
-    "emptyHelp": "Try changing your country or field preferences.",
+    "emptyHelp": "Verified program coverage is still limited. Browse the university directory or change your country and field choices.",
     "catalog_empty": "There are no programs in the catalog yet.",
-    "degree_unavailable": "There is no demo program for this degree yet.",
-    "field_unavailable": "There is no demo program for this degree and field yet.",
-    "country_unavailable": "There is no demo program in your selected countries for this field yet.",
-    "university_unavailable": "The selected university has no demo program for this degree and field.",
+    "degree_unavailable": "No source-backed program for this degree is in the catalog yet.",
+    "field_unavailable": "No source-backed program for this field and degree is in the catalog yet.",
+    "country_unavailable": "No source-backed program in the selected countries is in the catalog yet.",
+    "university_unavailable": "The selected university has no verified program for this field and degree yet.",
     "filters_empty": "The current filters hide all results. Clear the filters to see them.",
     "clearFilters": "Clear filters",
     "browse": "Browse available programs",
@@ -203,7 +216,17 @@
     "details": "View program",
     "saved": "Save",
     "compare": "Add to comparison",
-    "showing": "Showing {count} programs"
+    "showing": "Showing {count} programs",
+    "custom_field_unmapped": "Your custom major is saved, but it has not been mapped to the catalog. Try a related catalog field or browse universities.",
+    "insufficient_data": "There is not enough verified program data for this selection yet.",
+    "exactSubject": "Exact subject",
+    "relatedSubject": "Related subject",
+    "requirementConfidence": "Requirement evidence",
+    "confidence_verified": "Verified for selected intake",
+    "confidence_historical": "Historical year",
+    "confidence_unverified": "Unverified",
+    "confidence_missing": "No requirement data",
+    "loadMore": "Load more results"
   },
   "matchNotes": {
     "requirements_unverified": "Admission requirements are unverified or unavailable.",
@@ -214,7 +237,12 @@
     "language_requirement_missing": "Language requirement is unavailable.",
     "language_score_missing": "Language score is missing; a waiver may be possible.",
     "finance_missing": "Tuition or budget is unavailable; living costs are excluded.",
-    "scholarship_required_unverified": "Funding has not been verified for your full scholarship requirement."
+    "scholarship_required_unverified": "Funding has not been verified for your full scholarship requirement.",
+    "program_specific_prerequisites": "Program-specific prior study requirements need individual review.",
+    "subject_prerequisites_unverified": "A related subject does not establish admission eligibility.",
+    "hsk_not_demonstrated": "HSK requirement has not been demonstrated.",
+    "english_cefr_not_demonstrated": "English CEFR level has not been demonstrated.",
+    "finance_not_comparable": "Tuition and annual budget cannot be compared with the available data."
   },
   "directory": {
     "title": "Explore universities",
@@ -222,7 +250,9 @@
     "searchPlaceholder": "Search by university name",
     "programs": "Programs",
     "viewUniversity": "View university",
-    "noResults": "No universities found."
+    "noResults": "No universities found.",
+    "catalogOnly": "Program details are still being checked.",
+    "nextPage": "Next page"
   },
   "detail": {
     "about": "About",
@@ -242,7 +272,11 @@
     "askAI": "Ask AI assistant",
     "aiQuestion": "Write your question",
     "send": "Send",
-    "aiFallback": "AI is not configured; verify details with the official source."
+    "aiFallback": "AI is not configured; verify details with the official source.",
+    "institutionCatalogInfo": "Institutional information is available from ROR. Degree programs are checked separately.",
+    "catalogOnly": "This university is in the catalog; its degree programs have not yet been verified.",
+    "institutionSource": "Institution record",
+    "waiverPossible": "an exemption may apply"
   },
   "scholarships": {
     "title": "Scholarship opportunities",
@@ -252,7 +286,10 @@
     "partial": "Partial",
     "details": "View details",
     "empty": "No scholarship records yet.",
-    "warning": "Scholarship availability does not guarantee funding."
+    "warning": "Scholarship availability does not guarantee funding.",
+    "competitiveFull": "Competitive full scholarship available",
+    "verifiedSource": "Official source checked",
+    "eligibilityUnconfirmed": "Your personal eligibility has not been confirmed."
   },
   "roadmap": {
     "title": "Application roadmap",
@@ -289,13 +326,13 @@
     "privacy": "Privacy policy",
     "terms": "Terms of service",
     "notice": "Data notice",
-    "disclaimer": "Demo data must not guide admission or scholarship decisions. Check official sources."
+    "disclaimer": "Program coverage is limited and details can change. Check official sources before applying."
   },
   "legal": {
     "privacyTitle": "Privacy policy",
     "termsTitle": "Terms of service",
     "review": "This text needs legal review before public launch.",
-    "privacy": "In this demo, profile data is stored in your browser and sent to the API for compatibility evaluation. You can delete it by clearing browser storage.",
+    "privacy": "Profile data is stored in your browser and sent to the API for compatibility evaluation. You can delete it by clearing browser storage.",
     "terms": "Compatibility scores are not admission probabilities. Confirm program and scholarship information with the official organization."
   }
 }

@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { useRouter } from "@/i18n/navigation";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import {
   BookOpen,
   BriefcaseBusiness,
@@ -12,28 +12,16 @@ import {
   Check,
 } from "lucide-react";
 import { api } from "@/lib/api";
-import type { Profile, University } from "@/lib/types";
+import { countryName } from "@/lib/countries";
+import { SearchCombobox, type ComboOption } from "@/components/search-combobox";
+import type { AcademicField, Country, Profile, University } from "@/lib/types";
 
-const fields = [
-  "computer_science",
-  "artificial_intelligence",
-  "data_science",
-  "software_engineering",
-  "business_administration",
-  "economics",
-  "medicine",
-  "engineering",
-  "law",
-  "architecture",
-  "social_sciences",
-  "other",
-] as const;
-const countries = ["DE", "IT", "HU", "NL", "GB", "US", "TR", "PL"] as const;
 const initial: Profile = {
   degree: "master",
   field: "",
   countries: [],
   scholarship_priority: "preferred",
+  budget_period: "year",
   citizenship: "AZ",
 };
 const basicSchema = z.object({
@@ -42,38 +30,55 @@ const basicSchema = z.object({
 });
 
 export function Onboarding() {
+  const locale = useLocale();
   const t = useTranslations("onboarding"),
     common = useTranslations("common"),
-    f = useTranslations("fields"),
-    d = useTranslations("degrees"),
-    c = useTranslations("countryNames");
+    d = useTranslations("degrees");
   const router = useRouter();
   const { watch, setValue, reset } = useForm<Profile>({
     defaultValues: initial,
   });
   const profile = watch();
   const [step, setStep] = useState(0);
-  const [universities, setUniversities] = useState<University[]>([]);
-  const [catalogLoaded, setCatalogLoaded] = useState(false);
+  const [countryOptions, setCountryOptions] = useState<Country[]>([]);
+  const [countrySearch, setCountrySearch] = useState("");
+  const [fieldSelection, setFieldSelection] = useState<AcademicField | null>(null);
+  const [previousSelection, setPreviousSelection] = useState<AcademicField | null>(null);
+  const [universitySelection, setUniversitySelection] = useState<University | null>(null);
+  const [wantsUniversity, setWantsUniversity] = useState(false);
   const [error, setError] = useState("");
   const [ready, setReady] = useState(false);
   useEffect(() => {
     try {
       const saved = localStorage.getItem("abromap-profile");
-      if (saved) reset({ ...initial, ...JSON.parse(saved) });
+      if (saved) {
+        const restored = { ...initial, ...JSON.parse(saved) } as Profile;
+        if (restored.field !== "custom") restored.field = restored.field.replaceAll("_", "-");
+        if (restored.previous_field) restored.previous_field = restored.previous_field.replaceAll("_", "-");
+        reset(restored);
+        setWantsUniversity(Boolean(restored.university_id));
+      }
       const savedStep = Number(localStorage.getItem("abromap-step"));
       if (Number.isInteger(savedStep) && savedStep >= 0 && savedStep < 8)
         setStep(savedStep);
     } catch {}
     setReady(true);
-    api
-      .universities()
-      .then((items) => {
-        setUniversities(items);
-        setCatalogLoaded(true);
-      })
-      .catch(() => {});
   }, [reset]);
+  useEffect(() => { api.countries(locale).then(setCountryOptions).catch(() => {}); }, [locale]);
+  useEffect(() => {
+    if (profile.field && profile.field !== "custom")
+      api.fieldSearch(profile.field, locale, 5).then((rows) =>
+        setFieldSelection(rows.find((row) => row.slug === profile.field) || null)).catch(() => {});
+  }, [profile.field, locale]);
+  useEffect(() => {
+    if (profile.previous_field)
+      api.fieldSearch(profile.previous_field, locale, 5).then((rows) =>
+        setPreviousSelection(rows.find((row) => row.slug === profile.previous_field) || null)).catch(() => {});
+  }, [profile.previous_field, locale]);
+  useEffect(() => {
+    if (profile.university_id)
+      api.universityById(profile.university_id).then(setUniversitySelection).catch(() => {});
+  }, [profile.university_id]);
   useEffect(() => {
     if (ready) localStorage.setItem("abromap-profile", JSON.stringify(profile));
   }, [profile, ready]);
@@ -85,7 +90,8 @@ export function Onboarding() {
     setError("");
   }
   function next() {
-    if (step === 1 && !basicSchema.safeParse(profile).success) {
+    if (step === 1 && (!basicSchema.safeParse(profile).success ||
+        (profile.field === "custom" && !profile.custom_field?.trim()))) {
       setError(t("validation"));
       return;
     }
@@ -110,20 +116,11 @@ export function Onboarding() {
     "step7",
     "step8",
   ] as const;
-  const availableCount = universities.reduce(
-    (count, university) =>
-      count +
-      ((!profile.countries.length ||
-        profile.countries.includes(university.country)) &&
-      (!profile.university_id || profile.university_id === university.id)
-        ? university.programs.filter(
-            (program) =>
-              program.degree === profile.degree &&
-              program.field === profile.field,
-          ).length
-        : 0),
-    0,
-  );
+  const visibleCountries = countryOptions.filter((row) =>
+    `${row.name} ${row.iso_code}`.toLocaleLowerCase(locale).includes(countrySearch.toLocaleLowerCase(locale)));
+  const fieldOptions = (query: string): Promise<ComboOption[]> =>
+    api.fieldSearch(query, locale).then((rows) => rows.map((row) =>
+      ({ id: row.slug, label: row.name, secondary: row.category })));
   return (
     <div className="page">
       <div className="container wizard">
@@ -227,37 +224,29 @@ export function Onboarding() {
                 </div>
               </div>
               <div className="note">{t("gpaNote")}</div>
-              <div className="field">
-                <label htmlFor="field">{t("field")}</label>
-                <select
-                  id="field"
-                  value={profile.field}
-                  onChange={(e) => update("field", e.target.value)}
-                >
-                  <option value="">{common("unknown")}</option>
-                  {fields.map((x) => (
-                    <option key={x} value={x}>
-                      {f(x)}
-                    </option>
-                  ))}
-                </select>
-              </div>
+              {profile.field === "custom" ? <div className="field">
+                <label htmlFor="customMajor">{t("customMajor")}</label>
+                <input id="customMajor" value={profile.custom_field || ""}
+                  onChange={(event) => update("custom_field", event.target.value)} />
+                <button type="button" className="button secondary small" style={{ marginTop: 10 }}
+                  onClick={() => { update("field", ""); update("custom_field", ""); }}>
+                  {t("chooseFromCatalog")}
+                </button>
+              </div> : <>
+                <SearchCombobox label={t("field")} placeholder={t("searchMajor")}
+                  emptyMessage={t("noMajors")} clearLabel={common("clear")}
+                  value={profile.field} selectedLabel={fieldSelection?.name}
+                  fetchOptions={fieldOptions}
+                  onChange={(id) => { setFieldSelection(null); update("field", id); }} />
+                <button type="button" className="button secondary small" onClick={() => update("field", "custom")}
+                  style={{ justifySelf: "start" }}>{t("cannotFindMajor")}</button>
+              </>}
               {profile.degree !== "bachelor" && (
-                <div className="field">
-                  <label htmlFor="previous">{t("previousField")}</label>
-                  <select
-                    id="previous"
-                    value={profile.previous_field || ""}
-                    onChange={(e) => update("previous_field", e.target.value)}
-                  >
-                    <option value="">{common("unknown")}</option>
-                    {fields.map((x) => (
-                      <option key={x} value={x}>
-                        {f(x)}
-                      </option>
-                    ))}
-                  </select>
-                </div>
+                <SearchCombobox label={t("previousField")} placeholder={t("searchMajor")}
+                  emptyMessage={t("noMajors")} clearLabel={common("clear")}
+                  value={profile.previous_field || ""} selectedLabel={previousSelection?.name}
+                  fetchOptions={fieldOptions}
+                  onChange={(id) => { setPreviousSelection(null); update("previous_field", id); }} />
               )}
               {profile.degree === "phd" && (
                 <div className="field">
@@ -297,10 +286,36 @@ export function Onboarding() {
                   </div>
                 );
               })}
+              <div className="field">
+                <label htmlFor="hskLevel">{t("hskLevel")}</label>
+                <input id="hskLevel" type="number" min="1" max="9"
+                  placeholder={t("notTaken")} value={profile.hsk_level ?? ""}
+                  onChange={(e) => update("hsk_level", numberValue(e.target.value))} />
+              </div>
+              <div className="field">
+                <label htmlFor="hskScore">{t("hskScore")}</label>
+                <input id="hskScore" type="number" min="0" max="300"
+                  placeholder={t("notTaken")} value={profile.hsk_score ?? ""}
+                  onChange={(e) => update("hsk_score", numberValue(e.target.value))} />
+              </div>
+              <div className="field">
+                <label htmlFor="englishCefr">{t("englishCefr")}</label>
+                <select id="englishCefr" value={profile.english_cefr || ""}
+                  onChange={(e) => update("english_cefr", e.target.value)}>
+                  <option value="">{common("unknown")}</option>
+                  {["A1", "A2", "B1", "B2", "C1", "C2"].map((level) =>
+                    <option key={level} value={level}>{level}</option>)}
+                </select>
+              </div>
             </div>
           )}
           {step === 3 && (
-            <div className="choice-grid">
+            <div className="grid">
+              <div className="field"><label htmlFor="countrySearch">{t("searchCountry")}</label>
+                <input id="countrySearch" value={countrySearch}
+                  onChange={(event) => setCountrySearch(event.target.value)}
+                  placeholder={t("searchCountry")} /></div>
+              <div className="choice-grid country-options-scroll">
               <button
                 type="button"
                 className={`choice ${profile.countries.length === 0 ? "selected" : ""}`}
@@ -309,26 +324,29 @@ export function Onboarding() {
                 <Search />
                 {t("notSure")}
               </button>
-              {countries.map((code) => (
+              {visibleCountries.map((row) => (
                 <button
                   type="button"
-                  key={code}
-                  className={`choice ${profile.countries.includes(code) ? "selected" : ""}`}
+                  key={row.iso_code}
+                  className={`choice ${profile.countries.includes(row.iso_code) ? "selected" : ""}`}
                   onClick={() =>
                     update(
                       "countries",
-                      profile.countries.includes(code)
-                        ? profile.countries.filter((x) => x !== code)
-                        : [...profile.countries, code],
+                      profile.countries.includes(row.iso_code)
+                        ? profile.countries.filter((x) => x !== row.iso_code)
+                        : [...profile.countries, row.iso_code],
                     )
                   }
                 >
-                  {c(code)}
-                  {profile.countries.includes(code) && (
+                  <span>{row.name}<small className="country-availability">
+                    {t("countryAvailability", { universities: row.university_count, programs: row.verified_program_count })}
+                  </small></span>
+                  {profile.countries.includes(row.iso_code) && (
                     <Check size={18} style={{ marginLeft: "auto" }} />
                   )}
                 </button>
               ))}
+              </div>
             </div>
           )}
           {step === 4 && (
@@ -336,36 +354,30 @@ export function Onboarding() {
               <div className="choice-grid">
                 <button
                   type="button"
-                  className={`choice ${!profile.university_id ? "selected" : ""}`}
-                  onClick={() => update("university_id", undefined)}
+                  className={`choice ${!wantsUniversity ? "selected" : ""}`}
+                  onClick={() => { setWantsUniversity(false); update("university_id", undefined); }}
                 >
                   {t("notSure")}
                 </button>
                 <button
                   type="button"
-                  className={`choice ${profile.university_id ? "selected" : ""}`}
-                  onClick={() => update("university_id", universities[0]?.id)}
+                  className={`choice ${wantsUniversity ? "selected" : ""}`}
+                  onClick={() => setWantsUniversity(true)}
                 >
                   {t("yes")}
                 </button>
               </div>
-              {!!profile.university_id && (
-                <div className="field">
-                  <label htmlFor="university">{t("university")}</label>
-                  <select
-                    id="university"
-                    value={profile.university_id}
-                    onChange={(e) =>
-                      update("university_id", Number(e.target.value))
-                    }
-                  >
-                    {universities.map((x) => (
-                      <option key={x.id} value={x.id}>
-                        {x.name}
-                      </option>
-                    ))}
-                  </select>
-                </div>
+              {wantsUniversity && (
+                <SearchCombobox label={t("university")} placeholder={t("searchUniversity")}
+                  emptyMessage={t("noUniversities")} clearLabel={common("clear")}
+                  value={profile.university_id ? String(profile.university_id) : ""}
+                  selectedLabel={universitySelection?.name}
+                  fetchOptions={(query) => api.universitiesPage({ search: query,
+                    country: profile.countries.length === 1 ? profile.countries[0] : undefined,
+                    page_size: 12 }).then((page) => page.items.map((row) =>
+                    ({ id: String(row.id), label: row.name,
+                       secondary: `${row.city}, ${countryName(row.country, locale)}` })))}
+                  onChange={(id) => { setUniversitySelection(null); update("university_id", id ? Number(id) : undefined); }} />
               )}
             </div>
           )}
@@ -388,6 +400,7 @@ export function Onboarding() {
                       className={`choice ${profile.budget_eur === amount ? "selected" : ""}`}
                       onClick={() => {
                         update("budget_eur", amount as number | undefined);
+                        update("budget_period", "year");
                         update("scholarship_priority", String(priority));
                       }}
                     >
@@ -404,7 +417,7 @@ export function Onboarding() {
                   min="0"
                   value={profile.budget_eur ?? ""}
                   onChange={(e) =>
-                    update("budget_eur", numberValue(e.target.value))
+                    (update("budget_eur", numberValue(e.target.value)), update("budget_period", "year"))
                   }
                 />
               </div>
@@ -442,6 +455,8 @@ export function Onboarding() {
                   <option>German</option>
                   <option>Italian</option>
                   <option>Hungarian</option>
+                  <option>Chinese</option>
+                  <option>Chinese and English</option>
                 </select>
               </div>
               <div className="field">
@@ -503,9 +518,8 @@ export function Onboarding() {
               <div>
                 <small>{common("field")}</small>
                 <strong>
-                  {profile.field
-                    ? f(profile.field as (typeof fields)[number])
-                    : common("unknown")}
+                  {profile.field === "custom" ? profile.custom_field || common("unknown")
+                    : fieldSelection?.name || profile.field.replaceAll("-", " ") || common("unknown")}
                 </strong>
               </div>
               <div>
@@ -519,7 +533,9 @@ export function Onboarding() {
               <div>
                 <small>{t("yourTests")}</small>
                 <strong>
-                  {profile.ielts
+                  {profile.hsk_level
+                    ? `HSK ${profile.hsk_level}${profile.hsk_score ? ` (${profile.hsk_score})` : ""}`
+                    : profile.ielts
                     ? `IELTS ${profile.ielts}`
                     : profile.toefl
                       ? `TOEFL ${profile.toefl}`
@@ -531,7 +547,7 @@ export function Onboarding() {
                 <strong>
                   {profile.countries.length
                     ? profile.countries
-                        .map((x) => c(x as (typeof countries)[number]))
+                        .map((x) => countryOptions.find((row) => row.iso_code === x)?.name || countryName(x, locale))
                         .join(", ")
                     : t("notSure")}
                 </strong>
@@ -546,16 +562,8 @@ export function Onboarding() {
               </div>
             </div>
           )}
-          {catalogLoaded && profile.field && [1, 3, 4, 7].includes(step) && (
-            <div
-              className={availableCount ? "note" : "error"}
-              style={{ marginTop: 20 }}
-            >
-              {availableCount
-                ? t("catalogCount", { count: availableCount })
-                : t("catalogNone")}
-            </div>
-          )}
+          {profile.field && [1, 3, 4, 7].includes(step) &&
+            <div className="note" style={{ marginTop: 20 }}>{t("catalogAvailabilityNote")}</div>}
           {error && (
             <div className="error" style={{ marginTop: 20 }}>
               {error}

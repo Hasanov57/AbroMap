@@ -1,0 +1,421 @@
+{
+  "source": "Unicode CLDR country display names via Intl.DisplayNames",
+  "countries": [
+    {
+      "iso_code": "DE",
+      "name_en": "Germany",
+      "name_az": "Almaniya",
+      "name_ru": "Германия",
+      "region": "Europe",
+      "enabled": true
+    },
+    {
+      "iso_code": "IT",
+      "name_en": "Italy",
+      "name_az": "İtaliya",
+      "name_ru": "Италия",
+      "region": "Europe",
+      "enabled": true
+    },
+    {
+      "iso_code": "HU",
+      "name_en": "Hungary",
+      "name_az": "Macarıstan",
+      "name_ru": "Венгрия",
+      "region": "Europe",
+      "enabled": true
+    },
+    {
+      "iso_code": "FR",
+      "name_en": "France",
+      "name_az": "Fransa",
+      "name_ru": "Франция",
+      "region": "Europe",
+      "enabled": true
+    },
+    {
+      "iso_code": "ES",
+      "name_en": "Spain",
+      "name_az": "İspaniya",
+      "name_ru": "Испания",
+      "region": "Europe",
+      "enabled": true
+    },
+    {
+      "iso_code": "PT",
+      "name_en": "Portugal",
+      "name_az": "Portuqaliya",
+      "name_ru": "Португалия",
+      "region": "Europe",
+      "enabled": true
+    },
+    {
+      "iso_code": "NL",
+      "name_en": "Netherlands",
+      "name_az": "Niderland",
+      "name_ru": "Нидерланды",
+      "region": "Europe",
+      "enabled": true
+    },
+    {
+      "iso_code": "BE",
+      "name_en": "Belgium",
+      "name_az": "Belçika",
+      "name_ru": "Бельгия",
+      "region": "Europe",
+      "enabled": true
+    },
+    {
+      "iso_code": "AT",
+      "name_en": "Austria",
+      "name_az": "Avstriya",
+      "name_ru": "Австрия",
+      "region": "Europe",
+      "enabled": true
+    },
+    {
+      "iso_code": "CH",
+      "name_en": "Switzerland",
+      "name_az": "İsveçrə",
+      "name_ru": "Швейцария",
+      "region": "Europe",
+      "enabled": true
+    },
+    {
+      "iso_code": "PL",
+      "name_en": "Poland",
+      "name_az": "Polşa",
+      "name_ru": "Польша",
+      "region": "Europe",
+      "enabled": true
+    },
+    {
+      "iso_code": "CZ",
+      "name_en": "Czechia",
+      "name_az": "Çexiya",
+      "name_ru": "Чехия",
+      "region": "Europe",
+      "enabled": true
+    },
+    {
+      "iso_code": "SK",
+      "name_en": "Slovakia",
+      "name_az": "Slovakiya",
+      "name_ru": "Словакия",
+      "region": "Europe",
+      "enabled": true
+    },
+    {
+      "iso_code": "SI",
+      "name_en": "Slovenia",
+      "name_az": "Sloveniya",
+      "name_ru": "Словения",
+      "region": "Europe",
+      "enabled": true
+    },
+    {
+      "iso_code": "HR",
+      "name_en": "Croatia",
+      "name_az": "Xorvatiya",
+      "name_ru": "Хорватия",
+      "region": "Europe",
+      "enabled": true
+    },
+    {
+      "iso_code": "RO",
+      "name_en": "Romania",
+      "name_az": "Rumıniya",
+      "name_ru": "Румыния",
+      "region": "Europe",
+      "enabled": true
+    },
+    {
+      "iso_code": "BG",
+      "name_en": "Bulgaria",
+      "name_az": "Bolqarıstan",
+      "name_ru": "Болгария",
+      "region": "Europe",
+      "enabled": true
+    },
+    {
+      "iso_code": "GR",
+      "name_en": "Greece",
+      "name_az": "Yunanıstan",
+      "name_ru": "Греция",
+      "region": "Europe",
+      "enabled": true
+    },
+    {
+      "iso_code": "CY",
+      "name_en": "Cyprus",
+      "name_az": "Kipr",
+      "name_ru": "Кипр",
+      "region": "Europe",
+      "enabled": true
+    },
+    {
+      "iso_code": "MT",
+      "name_en": "Malta",
+      "name_az": "Malta",
+      "name_ru": "Мальта",
+      "region": "Europe",
+      "enabled": true
+    },
+    {
+      "iso_code": "SE",
+      "name_en": "Sweden",
+      "name_az": "İsveç",
+      "name_ru": "Швеция",
+      "region": "Europe",
+      "enabled": true
+    },
+    {
+      "iso_code": "NO",
+      "name_en": "Norway",
+      "name_az": "Norveç",
+      "name_ru": "Норвегия",
+      "region": "Europe",
+      "enabled": true
+    },
+    {
+      "iso_code": "DK",
+      "name_en": "Denmark",
+      "name_az": "Danimarka",
+      "name_ru": "Дания",
+      "region": "Europe",
+      "enabled": true
+    },
+    {
+      "iso_code": "FI",
+      "name_en": "Finland",
+      "name_az": "Finlandiya",
+      "name_ru": "Финляндия",
+      "region": "Europe",
+      "enabled": true
+    },
+    {
+      "iso_code": "IS",
+      "name_en": "Iceland",
+      "name_az": "İslandiya",
+      "name_ru": "Исландия",
+      "region": "Europe",
+      "enabled": true
+    },
+    {
+      "iso_code": "IE",
+      "name_en": "Ireland",
+      "name_az": "İrlandiya",
+      "name_ru": "Ирландия",
+      "region": "Europe",
+      "enabled": true
+    },
+    {
+      "iso_code": "GB",
+      "name_en": "United Kingdom",
+      "name_az": "Birləşmiş Krallıq",
+      "name_ru": "Великобритания",
+      "region": "Europe",
+      "enabled": true
+    },
+    {
+      "iso_code": "EE",
+      "name_en": "Estonia",
+      "name_az": "Estoniya",
+      "name_ru": "Эстония",
+      "region": "Europe",
+      "enabled": true
+    },
+    {
+      "iso_code": "LV",
+      "name_en": "Latvia",
+      "name_az": "Latviya",
+      "name_ru": "Латвия",
+      "region": "Europe",
+      "enabled": true
+    },
+    {
+      "iso_code": "LT",
+      "name_en": "Lithuania",
+      "name_az": "Litva",
+      "name_ru": "Литва",
+      "region": "Europe",
+      "enabled": true
+    },
+    {
+      "iso_code": "LU",
+      "name_en": "Luxembourg",
+      "name_az": "Lüksemburq",
+      "name_ru": "Люксембург",
+      "region": "Europe",
+      "enabled": true
+    },
+    {
+      "iso_code": "AL",
+      "name_en": "Albania",
+      "name_az": "Albaniya",
+      "name_ru": "Албания",
+      "region": "Europe",
+      "enabled": true
+    },
+    {
+      "iso_code": "RS",
+      "name_en": "Serbia",
+      "name_az": "Serbiya",
+      "name_ru": "Сербия",
+      "region": "Europe",
+      "enabled": true
+    },
+    {
+      "iso_code": "ME",
+      "name_en": "Montenegro",
+      "name_az": "Monteneqro",
+      "name_ru": "Черногория",
+      "region": "Europe",
+      "enabled": true
+    },
+    {
+      "iso_code": "MK",
+      "name_en": "North Macedonia",
+      "name_az": "Şimali Makedoniya",
+      "name_ru": "Северная Македония",
+      "region": "Europe",
+      "enabled": true
+    },
+    {
+      "iso_code": "BA",
+      "name_en": "Bosnia & Herzegovina",
+      "name_az": "Bosniya və Herseqovina",
+      "name_ru": "Босния и Герцеговина",
+      "region": "Europe",
+      "enabled": true
+    },
+    {
+      "iso_code": "XK",
+      "name_en": "Kosovo",
+      "name_az": "Kosovo",
+      "name_ru": "Косово",
+      "region": "Europe",
+      "enabled": true
+    },
+    {
+      "iso_code": "MD",
+      "name_en": "Moldova",
+      "name_az": "Moldova",
+      "name_ru": "Молдова",
+      "region": "Europe",
+      "enabled": true
+    },
+    {
+      "iso_code": "UA",
+      "name_en": "Ukraine",
+      "name_az": "Ukrayna",
+      "name_ru": "Украина",
+      "region": "Europe",
+      "enabled": true
+    },
+    {
+      "iso_code": "BY",
+      "name_en": "Belarus",
+      "name_az": "Belarus",
+      "name_ru": "Беларусь",
+      "region": "Europe",
+      "enabled": true
+    },
+    {
+      "iso_code": "TR",
+      "name_en": "Türkiye",
+      "name_az": "Türkiyə",
+      "name_ru": "Турция",
+      "region": "Europe/Asia",
+      "enabled": true
+    },
+    {
+      "iso_code": "AD",
+      "name_en": "Andorra",
+      "name_az": "Andorra",
+      "name_ru": "Андорра",
+      "region": "Europe",
+      "enabled": true
+    },
+    {
+      "iso_code": "MC",
+      "name_en": "Monaco",
+      "name_az": "Monako",
+      "name_ru": "Монако",
+      "region": "Europe",
+      "enabled": true
+    },
+    {
+      "iso_code": "SM",
+      "name_en": "San Marino",
+      "name_az": "San-Marino",
+      "name_ru": "Сан-Марино",
+      "region": "Europe",
+      "enabled": true
+    },
+    {
+      "iso_code": "VA",
+      "name_en": "Vatican City",
+      "name_az": "Vatikan",
+      "name_ru": "Ватикан",
+      "region": "Europe",
+      "enabled": true
+    },
+    {
+      "iso_code": "LI",
+      "name_en": "Liechtenstein",
+      "name_az": "Lixtenşteyn",
+      "name_ru": "Лихтенштейн",
+      "region": "Europe",
+      "enabled": true
+    },
+    {
+      "iso_code": "RU",
+      "name_en": "Russia",
+      "name_az": "Rusiya",
+      "name_ru": "Россия",
+      "region": "Europe/Asia",
+      "enabled": true
+    },
+    {
+      "iso_code": "GE",
+      "name_en": "Georgia",
+      "name_az": "Gürcüstan",
+      "name_ru": "Грузия",
+      "region": "Europe/Asia",
+      "enabled": true
+    },
+    {
+      "iso_code": "AM",
+      "name_en": "Armenia",
+      "name_az": "Ermənistan",
+      "name_ru": "Армения",
+      "region": "Europe/Asia",
+      "enabled": true
+    },
+    {
+      "iso_code": "AZ",
+      "name_en": "Azerbaijan",
+      "name_az": "Azərbaycan",
+      "name_ru": "Азербайджан",
+      "region": "Europe/Asia",
+      "enabled": true
+    },
+    {
+      "iso_code": "CN",
+      "name_en": "China",
+      "name_az": "Çin",
+      "name_ru": "Китай",
+      "region": "Asia",
+      "enabled": true
+    },
+    {
+      "iso_code": "US",
+      "name_en": "United States",
+      "name_az": "Amerika Birləşmiş Ştatları",
+      "name_ru": "Соединенные Штаты",
+      "region": "North America",
+      "enabled": true
+    }
+  ]
+}

@@ -460,10 +460,6 @@ textarea:focus-visible {
   background: #eaf1ff;
   color: #2857ae;
 }
-.tag.demo {
-  background: #fff1d9;
-  color: #a16207;
-}
 .tag.good {
   background: #e1f8ef;
   color: #137c52;
@@ -862,3 +858,61 @@ textarea:focus-visible {
     transition-duration: 0.01ms !important;
   }
 }
+.combo-field {
+  position: relative;
+  min-width: 0;
+}
+.combo-input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.combo-input-wrap > svg {
+  position: absolute;
+  left: 14px;
+  color: #64748b;
+  pointer-events: none;
+}
+.combo-input-wrap input {
+  width: 100%;
+  padding-left: 42px;
+  padding-right: 42px;
+}
+.combo-clear {
+  position: absolute;
+  right: 7px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: #64748b;
+  cursor: pointer;
+}
+.combo-clear:hover { background: #eff6ff; }
+.combo-list {
+  position: absolute;
+  z-index: 30;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  max-height: 280px;
+  overflow-y: auto;
+  border: 1px solid #dbe4f0;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 16px 40px rgb(24 47 91 / 16%);
+}
+.combo-option, .combo-empty {
+  padding: 10px 14px;
+  font-size: 14px;
+}
+.combo-option { cursor: pointer; display: grid; gap: 2px; }
+.combo-option small { color: #64748b; }
+.combo-option:hover, .combo-option.active { background: #eff6ff; }
+.combo-empty { color: #64748b; }
+.country-options-scroll { max-height: 360px; overflow-y: auto; padding: 4px; }
+.country-availability { display: block; margin-top: 4px; color: #64748b; font-size: 12px; font-weight: 400; }

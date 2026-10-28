@@ -4,16 +4,17 @@ import { Bookmark, ExternalLink, MessageCircle, Send } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { api } from "@/lib/api";
-import type { Program, University } from "@/lib/types";
+import type { Program, UniversityBrief } from "@/lib/types";
+import { countryName } from "@/lib/countries";
 export function ProgramDetail({ id }: { id: number }) {
   const locale = useLocale(),
     t = useTranslations("detail"),
     common = useTranslations("common"),
-    fields = useTranslations("fields"),
     degrees = useTranslations("degrees"),
-    country = useTranslations("countryNames");
+    fieldLabels = useTranslations("fields");
   const [item, setItem] = useState<Program | null>(null),
-    [university, setUniversity] = useState<University | null>(null),
+    [university, setUniversity] = useState<UniversityBrief | null>(null),
+    [intakeYear, setIntakeYear] = useState<number | null>(null),
     [loading, setLoading] = useState(true),
     [error, setError] = useState(false),
     [question, setQuestion] = useState(""),
@@ -21,16 +22,16 @@ export function ProgramDetail({ id }: { id: number }) {
     [asking, setAsking] = useState(false),
     [saved, setSaved] = useState(false);
   useEffect(() => {
-    Promise.all([api.program(id), api.universities()])
-      .then(([program, universities]) => {
+    api.program(id)
+      .then((program) => {
         setItem(program);
-        setUniversity(
-          universities.find((u) => u.programs.some((p) => p.id === id)) || null,
-        );
+        setUniversity(program.university);
       })
       .catch(() => setError(true))
       .finally(() => setLoading(false));
     try {
+      const profile = JSON.parse(localStorage.getItem("abromap-profile") || "null");
+      setIntakeYear(profile?.intake_year || null);
       setSaved(
         (
           JSON.parse(localStorage.getItem("abromap-saved") || "[]") as number[]
@@ -58,10 +59,12 @@ export function ProgramDetail({ id }: { id: number }) {
       setAsking(false);
     }
   }
-  const req = item?.requirements[0];
-  const historical = req
-    ? Number(req.academic_year.slice(5)) <= new Date().getFullYear()
-    : false;
+  const req = item?.requirements.find((row) => intakeYear && row.academic_year === `${intakeYear}/${intakeYear + 1}` && row.status.startsWith("verified"))
+    || item?.requirements.find((row) => row.status.startsWith("verified"))
+    || item?.requirements.find((row) => row.academic_year === "not stated")
+    || item?.requirements[0];
+  const historical = Boolean(req && ((intakeYear && /^\d{4}/.test(req.academic_year) && req.academic_year !== `${intakeYear}/${intakeYear + 1}`)
+    || req.status === "verified_historical"));
   return (
     <div className="page">
       <div className="container">
@@ -76,7 +79,6 @@ export function ProgramDetail({ id }: { id: number }) {
                 <span className="tag">
                   {degrees(item.degree as "bachelor" | "master" | "phd")}
                 </span>
-                <span className="tag demo">{common("demo")}</span>
               </div>
               <h1>{item.name}</h1>
               <p>
@@ -86,13 +88,12 @@ export function ProgramDetail({ id }: { id: number }) {
                       {university.name}
                     </Link>{" "}
                     · {university.city},{" "}
-                    {country(
-                      university.country as
-                        "DE" | "IT" | "HU" | "NL" | "GB" | "US" | "TR" | "PL",
-                    )}
+                    {countryName(university.country, locale)}
                   </>
                 ) : (
-                  fields(item.field as "computer_science")
+                  fieldLabels.has(item.field.replaceAll("-", "_"))
+                    ? fieldLabels(item.field.replaceAll("-", "_") as "computer_science")
+                    : item.field.replaceAll("-", " ")
                 )}
               </p>
             </div>
@@ -101,14 +102,14 @@ export function ProgramDetail({ id }: { id: number }) {
                 <section className="card">
                   <h3>{t("requirements")}</h3>
                   <p>{t("requirementsNote")}</p>
+                  {item.description && <p>{item.description}</p>}
                   {req ? (
                     <>
                       <div className="row" style={{ margin: "18px 0" }}>
                         <span className="tag warn">
-                          {historical ? common("historical") : common("year")} ·{" "}
-                          {req.academic_year}
+                          {req.academic_year === "not stated" ? common("yearNotStated") : <>{historical ? common("historical") : common("year")} · {req.academic_year}</>}
                         </span>
-                        <span className="tag demo">
+                        <span className="tag">
                           {req.status === "verified_current"
                             ? common("verifiedCurrent")
                             : req.status === "verified_historical"
@@ -136,12 +137,16 @@ export function ProgramDetail({ id }: { id: number }) {
                         <div>
                           <small>{t("previousField")}</small>
                           <strong>
-                            {req.previous_field
-                              ? fields(req.previous_field as "computer_science")
-                              : common("unknown")}
+                            {req.previous_study_notes || req.previous_field || common("unknown")}
                           </strong>
                         </div>
                       </div>
+                      {req.notes && <p className="note" style={{ marginTop: 16 }}>{req.notes}</p>}
+                      {req.exams.map((exam) => <div className="note" key={exam.exam_type} style={{ marginTop: 10 }}>
+                        <strong>{exam.exam_type.toUpperCase()}</strong>: {exam.minimum_level || ""}
+                        {exam.minimum_score !== null ? ` · ${exam.minimum_score}` : ""}
+                        {exam.waiver_possible ? ` · ${t("waiverPossible")}` : ""}
+                      </div>)}
                       {req.verified_at && (
                         <p className="small-text muted">
                           {common("verifiedAt", { date: req.verified_at })}
@@ -209,7 +214,7 @@ export function ProgramDetail({ id }: { id: number }) {
                       <strong>
                         {item.tuition_eur === null
                           ? common("unknown")
-                          : `€${item.tuition_eur.toLocaleString()}`}
+                          : `${item.tuition_currency || "EUR"} ${item.tuition_eur.toLocaleString()}${item.tuition_period ? ` / ${item.tuition_period}` : ""}`}
                       </strong>
                     </div>
                     <div>
@@ -249,7 +254,7 @@ export function ProgramDetail({ id }: { id: number }) {
                     )}
                   </div>
                   <p className="small-text muted" style={{ marginTop: 16 }}>
-                    {common("demo")}
+                    {item.source_publisher || t("official")} · {item.verified_at || common("unknown")}
                   </p>
                 </div>
               </aside>

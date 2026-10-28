@@ -1,37 +1,30 @@
 "use client";
 import { useEffect, useState } from "react";
 import { ArrowUpRight } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { api } from "@/lib/api";
-const codes = ["DE", "IT", "HU", "NL", "GB", "US", "TR", "PL"] as const;
+import type { Country } from "@/lib/types";
 export function CountryCards() {
-  const t = useTranslations("countryNames"),
-    l = useTranslations("landing");
-  const [counts, setCounts] = useState<Record<string, number>>({});
+  const locale = useLocale(), l = useTranslations("landing");
+  const [countries, setCountries] = useState<Country[]>([]);
   useEffect(() => {
-    api
-      .countries()
-      .then((rows) =>
-        setCounts(
-          Object.fromEntries(rows.map((x) => [x.code, x.program_count])),
-        ),
-      )
-      .catch(() => {});
-  }, []);
+    api.countries(locale).then((rows) => setCountries(rows.filter((row) => row.university_count > 0)
+      .sort((a, b) => b.university_count - a.university_count).slice(0, 8))).catch(() => {});
+  }, [locale]);
   return (
     <div className="grid four">
-      {codes.map((code) => (
+      {countries.map((row) => (
         <Link
-          key={code}
+          key={row.iso_code}
           className="country-card"
-          href={`/universities?country=${code}`}
+          href={`/universities?country=${row.iso_code}`}
         >
           <div>
-            <strong>{t(code)}</strong>
+            <strong>{row.name}</strong>
             <small>
-              {counts[code]
-                ? `${counts[code]} ${l("programs")}`
+              {row.verified_program_count
+                ? `${row.verified_program_count} ${l("programs")}`
                 : l("noPrograms")}
             </small>
           </div>
