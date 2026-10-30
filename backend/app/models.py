@@ -182,7 +182,7 @@ class Requirement(Base):
                       Index("ix_requirements_year_status", "academic_year", "status"))
     id: Mapped[int] = mapped_column(primary_key=True)
     program_id: Mapped[int] = mapped_column(ForeignKey("programs.id"))
-    academic_year: Mapped[str] = mapped_column(String(9))
+    academic_year: Mapped[str] = mapped_column(String(32))
     applicant_category: Mapped[str] = mapped_column(String(64), default="all")
     min_gpa: Mapped[float | None] = mapped_column(Float)
     gpa_scale: Mapped[float | None] = mapped_column(Float)
