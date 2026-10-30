@@ -1,5 +1,6 @@
 """Idempotent ROR institutional import. No degree programs are inferred here."""
 
+from collections import defaultdict
 from datetime import datetime, timezone
 from typing import Iterable
 
@@ -22,6 +23,27 @@ def import_ror(db: Session, payloads: Iterable[dict], *, dry_run: bool = True,
         run = ImportRun(source="ror", source_version=source_version, dry_run=False)
         db.add(run)
         db.commit()
+    # A remote database round trip for every lookup makes a full ROR import take
+    # hours. Load the keys once and keep these indexes current as rows are added.
+    universities_by_ror = {row.ror_id: row for row in db.scalars(
+        select(University).where(University.ror_id.is_not(None))).all()}
+    names = {(country, normalized_name): university_id for country, normalized_name, university_id in
+             db.execute(select(University.country, University.normalized_name, University.id)
+                        .where(University.is_demo.is_(False))).all()}
+    aliases = defaultdict(set)
+    for university_id, name in db.execute(select(UniversityAlias.university_id, UniversityAlias.name)):
+        aliases[university_id].add(name)
+    identifiers = defaultdict(set)
+    identifier_owners = set()
+    for university_id, scheme, value in db.execute(select(
+            UniversityIdentifier.university_id, UniversityIdentifier.scheme, UniversityIdentifier.value)):
+        identifiers[university_id].add((scheme, value))
+        identifier_owners.add((scheme, value))
+    sources = {row.source_record_id: row for row in db.scalars(
+        select(UniversitySource).where(UniversitySource.source == "ror")).all()}
+    review_ids = set(db.scalars(select(UniversityReviewCandidate.source_record_id)).all())
+    prior_expire_on_commit = db.expire_on_commit
+    db.expire_on_commit = False
     try:
         for payload in payloads:
             if limit is not None and counts["processed"] >= limit:
@@ -31,28 +53,31 @@ def import_ror(db: Session, payloads: Iterable[dict], *, dry_run: bool = True,
             if record is None:
                 counts["skipped"] += 1
                 continue
-            existing = db.scalar(select(University).where(University.ror_id == record.ror_id))
+            existing = universities_by_ror.get(record.ror_id)
             if existing is None:
                 # Names are a review signal, never sufficient grounds for an automatic merge.
-                name_conflict = db.scalar(select(University.id).where(University.country == record.country,
-                                                                      University.normalized_name == normalize_text(record.name),
-                                                                      University.is_demo.is_(False)))
+                name_conflict = names.get((record.country, normalize_text(record.name)))
                 if name_conflict:
                     counts["skipped"] += 1
-                    if not dry_run:
-                        review = db.scalar(select(UniversityReviewCandidate).where(
-                            UniversityReviewCandidate.source_record_id == record.ror_id))
-                        if review is None:
-                            db.add(UniversityReviewCandidate(source="ror", source_record_id=record.ror_id,
-                                candidate_university_id=name_conflict, name=record.name, country=record.country,
-                                reason="same_normalized_name_different_ror_id", status="pending"))
+                    if not dry_run and record.ror_id not in review_ids:
+                        db.add(UniversityReviewCandidate(source="ror", source_record_id=record.ror_id,
+                            candidate_university_id=name_conflict, name=record.name, country=record.country,
+                            reason="same_normalized_name_different_ror_id", status="pending"))
+                        review_ids.add(record.ror_id)
                     continue
                 counts["inserted"] += 1
             else:
                 counts["updated"] += 1
             if dry_run:
                 continue
-            upsert_university(db, record, existing)
+            previous_name = (existing.country, existing.normalized_name) if existing else None
+            university = upsert_university(db, record, existing, aliases=aliases,
+                identifiers=identifiers, identifier_owners=identifier_owners, sources=sources)
+            universities_by_ror[record.ror_id] = university
+            if previous_name and previous_name != (record.country, normalize_text(record.name)) \
+                    and names.get(previous_name) == university.id:
+                del names[previous_name]
+            names[(record.country, normalize_text(record.name))] = university.id
             if counts["processed"] % batch_size == 0:
                 db.commit()
                 if run:
@@ -77,10 +102,16 @@ def import_ror(db: Session, payloads: Iterable[dict], *, dry_run: bool = True,
                 setattr(run, key, value)
             db.commit()
         raise
+    finally:
+        db.expire_on_commit = prior_expire_on_commit
 
 
 def upsert_university(db: Session, record: InstitutionRecord,
-                      existing: University | None = None) -> University:
+                      existing: University | None = None, *,
+                      aliases: dict[int, set[str]],
+                      identifiers: dict[int, set[tuple[str, str]]],
+                      identifier_owners: set[tuple[str, str]],
+                      sources: dict[str, UniversitySource]) -> University:
     now = datetime.now(timezone.utc)
     university = existing
     if university is None:
@@ -102,28 +133,26 @@ def upsert_university(db: Session, record: InstitutionRecord,
         university.source_url = record.source_url
         university.status = "active"
         university.is_demo = False
-    existing_aliases = {row.name for row in db.scalars(select(UniversityAlias).where(
-        UniversityAlias.university_id == university.id)).all()}
+    existing_aliases = aliases[university.id]
     for name, locale in record.aliases:
         if name not in existing_aliases:
             db.add(UniversityAlias(university_id=university.id, name=name, locale=locale,
                                    normalized_name=normalize_text(name)))
             existing_aliases.add(name)
-    existing_ids = {(row.scheme, row.value) for row in db.scalars(select(UniversityIdentifier).where(
-        UniversityIdentifier.university_id == university.id)).all()}
+    existing_ids = identifiers[university.id]
     for scheme, value in record.identifiers:
         if (scheme, value) not in existing_ids:
-            owner = db.scalar(select(UniversityIdentifier.id).where(UniversityIdentifier.scheme == scheme,
-                                                                     UniversityIdentifier.value == value))
-            if owner is None:
+            if (scheme, value) not in identifier_owners:
                 db.add(UniversityIdentifier(university_id=university.id, scheme=scheme, value=value))
                 existing_ids.add((scheme, value))
-    source = db.scalar(select(UniversitySource).where(UniversitySource.source == "ror",
-                                                       UniversitySource.source_record_id == record.ror_id))
+                identifier_owners.add((scheme, value))
+    source = sources.get(record.ror_id)
     if source is None:
-        db.add(UniversitySource(university_id=university.id, source="ror",
-                                source_record_id=record.ror_id, source_url=record.source_url,
-                                retrieved_at=now))
+        source = UniversitySource(university_id=university.id, source="ror",
+                                  source_record_id=record.ror_id, source_url=record.source_url,
+                                  retrieved_at=now)
+        db.add(source)
+        sources[record.ror_id] = source
     else:
         source.retrieved_at = now
     return university

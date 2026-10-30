@@ -1,5 +1,6 @@
 import json
 import zipfile
+from copy import deepcopy
 
 from sqlalchemy import func, select
 
@@ -53,6 +54,23 @@ def test_ror_import_is_dry_run_and_idempotent(db):
     assert import_ror(db, [same_name_different_id], dry_run=False)["skipped"] == 1
     assert db.scalar(select(func.count(UniversityReviewCandidate.id))) == 1
     assert db.scalar(select(func.count(University.id))) == 1
+
+
+def test_ror_import_tracks_new_rows_within_one_batch(db):
+    first = ror_payload()
+    same_name = deepcopy(first)
+    same_name["id"] = "https://ror.org/123456789"
+    second = deepcopy(first)
+    second["id"] = "https://ror.org/987654321"
+    second["names"][0]["value"] = "Another University"
+
+    counts = import_ror(db, [first, first, same_name, second], dry_run=False, batch_size=4)
+    assert counts == {"processed": 4, "inserted": 2, "updated": 1, "skipped": 1, "errors": 0}
+    assert db.scalar(select(func.count(University.id))) == 2
+    assert db.scalar(select(func.count(UniversityReviewCandidate.id))) == 1
+    assert db.scalar(select(func.count(UniversitySource.id))) == 2
+    # Both records claim the same Wikidata ID; only one copy is stored.
+    assert db.scalar(select(func.count(UniversityIdentifier.id))) == 3
 
 
 def test_stream_json_and_zip(tmp_path):
